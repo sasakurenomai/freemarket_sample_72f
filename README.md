@@ -59,9 +59,10 @@ belongs_to  :item
 |shipping_cost|integer|null: false|
 |shipping_bays|string|null: false|
 #### Association
-- has_many :users, through: :users_items
-- has_many :users_items
-- has_many :item_images
+- has_many   :users, through: :users_items
+- has_many   :users_items
+- has_many   :item_images
+- belongs_to :category
 
 ### Item_imagesテーブル
 |Column|Type|Options|
@@ -71,6 +72,12 @@ belongs_to  :item
 #### Association
 - belongs_to :item
 
+### Categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|category|string|null: false|
+#### Association
+- has_many :items
 
 ### Commentsテーブル
 |Column|Type|Options|
