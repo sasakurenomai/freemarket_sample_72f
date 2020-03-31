@@ -24,7 +24,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 - has_many :items, through: :comments
 - has_many :comments
 
-### users_items
+### users_itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |buyer_id|integer||
@@ -34,7 +34,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 belongs_to: user
 belongs_to: item
 
-### items
+### itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item-name|string|null: false|
@@ -56,7 +56,7 @@ belongs_to: item
 - has_many :users_items
 - belongs_to :item-image
 
-### item-images
+### item-imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image_1|string|null: false|
@@ -73,7 +73,7 @@ belongs_to: item
 - belongs_to :item
 
 
-### comments
+### commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
@@ -84,7 +84,7 @@ belongs_to :user
 belongs_to :item
 
 
-### likes
+### likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
