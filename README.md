@@ -30,7 +30,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |prefecture|string|null: false|
 |city|string|null :false|
 |street|string|null: false|
-|bulding|strign|null :false|
+|building|string||
 #### Association
 - has_many :users
 
