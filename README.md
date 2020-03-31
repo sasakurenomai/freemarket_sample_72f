@@ -4,7 +4,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 ```
 
 ## DB設計
-### usersテーブル
+### Usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true, null: false|
@@ -24,7 +24,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 - has_many :items, through: :comments
 - has_many :comments
 
-### users_itemsテーブル
+### Users_Itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |buyer_id|integer||
@@ -34,7 +34,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 belongs_to: user
 belongs_to: item
 
-### itemsテーブル
+### Itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item-name|string|null: false|
@@ -54,26 +54,18 @@ belongs_to: item
 #### Association
 - has_many :users, through: :users_items
 - has_many :users_items
-- belongs_to :item-image
+- has_many :item-images
 
-### item-imagesテーブル
+### Item-imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image_1|string|null: false|
-|image_2|string||
-|image_3|string||
-|image_4|string||
-|image_5|string||
-|image_6|string||
-|image_7|string||
-|image_8|string||
-|image_9|string||
-|image_10|string||
+|image_url|string|null: false|
+|item_id|integer|null: false|
 #### Association
 - belongs_to :item
 
 
-### commentsテーブル
+### Commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
@@ -84,7 +76,7 @@ belongs_to :user
 belongs_to :item
 
 
-### likesテーブル
+### Likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
