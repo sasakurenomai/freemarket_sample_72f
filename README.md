@@ -20,7 +20,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 - has_many :users_items
 - has_many :likes
 - has_many :comments
-- belongs_to :address
+- has_one  :address
 
 ### Address
 |Column|Type|Options|
@@ -32,7 +32,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |street|string|null: false|
 |building|string||
 #### Association
-- has_many :users
+- belongs_to :users
 
 ### Users_Itemsテーブル
 |Column|Type|Options|
@@ -41,8 +41,8 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |seller_id|integer|null:false, foreign_key:true|
 |item_id|integer|null:false, foreign_key:true|
 #### Association
-belongs_to: user
-belongs_to: item
+belongs_to  :user
+belongs_to  :item
 
 ### Itemsテーブル
 |Column|Type|Options|
@@ -53,7 +53,6 @@ belongs_to: item
 |item_status|integer|null: false|
 |brand|string||
 |category_id|integer|null: false, foreign_key: true|
-|like_id|integer|foreign_key: true|
 |price|integer|null: false|
 |shipping_how_to|integer||
 |shipping_area|integer|null: false|
