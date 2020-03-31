@@ -32,7 +32,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |street|string|null: false|
 |building|string||
 #### Association
-- belongs_to :users
+- belongs_to :user
 
 ### Users_Itemsテーブル
 |Column|Type|Options|
@@ -75,7 +75,7 @@ belongs_to  :item
 ### Categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|category|string|null: false|
+|name|string|null: false|
 #### Association
 - has_many :items
 
