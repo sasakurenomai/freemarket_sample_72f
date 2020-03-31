@@ -39,9 +39,9 @@ belongs_to: item
 |------|----|-------|
 |item-name|string|null: false|
 |details|string|null: false|
-|item-image_id|integer|null: false|
-|sales-status|integer|null:false|
-|item-status|integer|null: false|
+|item_image_id|integer|null: false|
+|sales_status|integer|null:false|
+|item_status|integer|null: false|
 |brand|string||
 |category_id|integer|null: false|
 |comment_id|integer||
@@ -54,9 +54,9 @@ belongs_to: item
 #### Association
 - has_many :users, through: :users_items
 - has_many :users_items
-- has_many :item-images
+- has_many :item_images
 
-### Item-imagesテーブル
+### Item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|
@@ -83,4 +83,4 @@ belongs_to :item
 |item_id|integer|null: false|
 #### Association
 - belongs_to :user
-- belongs_to :item 
+- belongs_to :item
