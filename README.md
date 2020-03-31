@@ -14,22 +14,21 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |nickname|string|null: false, unique: true|
 |address|string|null: false|
 |value|integer||
-|profile-text|text||
-|profile-image|string||
+|profile_text|text||
+|profile_image|string||
 #### Association
 - has_many :items, through: :users_items
 - has_many :users_items
 - has_many :items, through: :likes
 - has_many :likes
-- has_many :items, through: :comments
 - has_many :comments
 
 ### Users_Itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|buyer_id|integer||
-|seller_id|integer|null:false|
-|item_id|integer|null:false|
+|buyer_id|integer|foreign_key:true|
+|seller_id|integer|null:false, foreign_key:true|
+|item_id|integer|null:false, foreign_key:true|
 #### Association
 belongs_to: user
 belongs_to: item
@@ -37,15 +36,13 @@ belongs_to: item
 ### Itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item-name|string|null: false|
+|name|string|null: false|
 |details|string|null: false|
-|item_image_id|integer|null: false|
 |sales_status|integer|null:false|
 |item_status|integer|null: false|
 |brand|string||
-|category_id|integer|null: false|
-|comment_id|integer||
-|like_id|integer||
+|category_id|integer|null: false, foreign_key: true|
+|like_id|integer|foreign_key: true|
 |price|integer|null: false|
 |shipping_how_to|integer||
 |shipping_area|integer|null: false|
@@ -60,7 +57,7 @@ belongs_to: item
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|
-|item_id|integer|null: false|
+|item_id|integer|null: false, foreign_key:true|
 #### Association
 - belongs_to :item
 
@@ -68,8 +65,8 @@ belongs_to: item
 ### Commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|item_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 |text|text|null: false|
 #### Association
 belongs_to :user
@@ -79,8 +76,8 @@ belongs_to :item
 ### Likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|item_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 #### Association
 - belongs_to :user
 - belongs_to :item
