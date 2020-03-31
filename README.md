@@ -19,7 +19,6 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 #### Association
 - has_many :items, through: :users_items
 - has_many :users_items
-- has_many :items, through: :likes
 - has_many :likes
 - has_many :comments
 
