@@ -12,7 +12,6 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |password|string|null: false|
 |age|integer|null: false|
 |nickname|string|null: false, unique: true|
-|address|string|null: false|
 |value|integer||
 |profile_text|text||
 |profile_image|string||
@@ -21,6 +20,19 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 - has_many :users_items
 - has_many :likes
 - has_many :comments
+- belongs_to :address
+
+### Address
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key:true|
+|zip_code|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null :false|
+|street|string|null: false|
+|bulding|strign|null :false|
+#### Association
+- has_many :users
 
 ### Users_Itemsテーブル
 |Column|Type|Options|
