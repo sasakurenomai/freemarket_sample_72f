@@ -1,0 +1,25 @@
+.header
+  .header__inner
+    .header__inner__main
+      %h1{ class: '.header__inner__main__icon' }
+        = link_to '#' do
+          = image_tag '/logo/logo.png'
+      .header__inner__main__searchBox
+        %form
+          %input{ class:'header__inner__main__searchBox--input', placeholder: 'キーワードから探す' }
+          %button{ type: 'submit' }
+            .header__inner__main__searchBox__icon
+              = image_tag '/icon/icon-search 1.png'
+        .header__inner__main__searchBox__results
+          -# 検索結果を表示する
+    .header__inner__nav
+      %ul{ class: 'header__inner__nav__listLeft' }
+        %li{ class: 'header__inner__nav__listLeft__item header__inner__nav__listLeft__item--first' } カテゴリー
+        %li{ class: 'header__inner__nav__listLeft__item' } ブランド
+      %ul{ class: 'header__inner__nav__listRight' }
+        %li{ class: 'header__inner__nav__listRight__item' }
+          = link_to '#' do
+            ログイン
+        %li{ class: 'header__inner__nav__listRight__item header__inner__nav__listRight__item--last' }
+          = link_to '#' do
+            新規登録

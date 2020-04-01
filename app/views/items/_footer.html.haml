@@ -40,5 +40,10 @@
           = link_to '#' do
             お知らせ
   .footer__logo
-    = image_tag 'logo-white-footer.svg'
+    = image_tag '/logo/logo-white.png'
   %p © FURIMA
+= link_to '#' do
+  .purchaseBtn
+    %span{ class: 'purchaseBtn__text' }
+      出品する
+    = image_tag '/icon/icon_camera.png', { class: 'purchaseBtn__icon' }
