@@ -103,44 +103,83 @@
         padding: 10px 20px;
         background-color: #3CCACE;
         color: #fff;
-          
-
-        }
-    }
-
-  }   
-
-
-}
-  
-    
-    
-    
+      }
       
- 
-
+      img{
+        width: 100%;
+        vertical-align: bottom;
+      }  
+    }
+  }   
+}
+   
 .list__pict{
         position: relative;
         margin-bottom: 20px;
-      }
+}
+
+.list__text{
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 50px;
+  margin: 0 0 0 2px;
+  span{
+    color: #3CCACE;
+  }
+}
+
+.list__description{
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 16px 0 0;
+}
 
 
 
-
-
-/*%section.mainVisual
-  .content
-    %h2.content__subtitle
-      人生を変えるフリマアプリ
-    %p.content__text
-      FURIMAはだれでも簡単にできる  
-      %br
-        フリマアプリです
-    .content__btn
-      =  image_tag  "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", size: "50×50"
-      =  link_to  class:  "content__btn__aBtn"
-      =  image_tag  "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", size: "50×50"
-      =  link_to  class:  "content__btn__bBtn"
+.topMiddleDl{
+  height: 400px;
+  background-image: url("/pict/bg-topMiddleDl-pict.jpg");
+  background-size: cover;
+  background-position: bottom right;
+  display: flex;
+  align-items: center;
   
-  .picturer
-*/
+}
+
+.topMiddleDl__inner{
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  text-align: left;
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;  
+
+  
+}
+
+.subtitle2{
+    font-size: 27px;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+  
+  .text2{
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 20px 0 30px;
+  }  
+
+
+.btn2{
+    display: flex;
+    width: 180px;
+
+  img{
+    vertical-align: bottom;
+    }
+
+  a{
+    margin-right: 10px;
+  }   
+}
+
