@@ -7,14 +7,22 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 ### Usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+
+|nickname|string|null: false, unique: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
+|birthday|string|null: false|
+
+<!-- |value|integer||
 |age|integer|null: false|
-|nickname|string|null: false, unique: true|
-|value|integer||
 |profile_text|text||
 |profile_image|string||
+|name|string|index: true, null: false| -->
+
 #### Association
 - has_many :items, through: :users_items
 - has_many :users_items

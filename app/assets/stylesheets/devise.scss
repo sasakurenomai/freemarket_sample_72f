@@ -1,0 +1,113 @@
+.register-wrapper{
+  background-color: #F5F5F5;
+}
+
+.register-header{
+  height: 128px;
+  text-align: center;
+  img{
+    margin: 40px 0 0;
+  }
+  .progress-bar{
+    padding: 40px 0 0 44px;
+    border: 0;
+  }
+}
+.single-main{
+  display: block;
+  .single-container{
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    .single-head{
+      font-size: 22px;
+      font-weight: bold;
+      padding: 32px;
+      border-bottom: solid 1px #F5F5F5;
+      text-align: center;
+    }
+    .register-form{
+      padding: 24px 16px 40px;
+      .single-content{
+        .form-group{
+          width: 50%;
+          margin: 0 auto;
+          margin-top: 24px;
+          label{
+            font-weight: 600px;
+          }
+          .form-require{
+            background: #ea352d;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+
+          }
+          .input-field{
+            margin: 8px 0 0;
+            input{
+              height: 30px;
+              width: 90%;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 14px;
+            }
+            input#user_first_name,input#user_last_name{
+              margin-right: 8px;
+              width: 36%;
+            }
+            input#user_first_name_kana,input#user_last_name_kana{
+              margin-right: 8px;
+              width: 36%;
+            }
+            .year,.month,.day{
+              margin-bottom: 5px;
+              height: 42px;
+              width: 25%;
+              padding: 0 10px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 14px;
+            }
+            .month,.day{
+              margin-left: 5px;
+            }
+          }
+          .action{
+            text-align: center;
+            input{
+              background-color: red;
+              border: 5px solid red;
+              color: #fff;
+              width:100%;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.info-text1{
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+
+.info-text2{
+  color: #888;
+  font-size: 14px;
+}
+
+.register-footer{
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+}
