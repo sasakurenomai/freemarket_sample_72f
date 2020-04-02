@@ -43,7 +43,7 @@
             border-radius: 2px;
             color: #fff;
             font-size: 12px;
-            vertical-align: top;
+
           }
           .input-field{
             margin: 8px 0 0;
@@ -76,6 +76,19 @@
               line-height: 1.5;
               font-size: 14px;
             }
+            .month,.day{
+              margin-left: 5px;
+            }
+          }
+          .action{
+            text-align: center;
+            input{
+              background-color: red;
+              border: 5px solid red;
+              color: #fff;
+              width:100%;
+              margin: 0 auto;
+            }
           }
         }
       }
@@ -83,6 +96,15 @@
   }
 }
 
+.info-text1{
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+
+.info-text2{
+  color: #888;
+  font-size: 14px;
+}
 
 .register-footer{
   width: 456px;
