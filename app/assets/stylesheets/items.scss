@@ -1,3 +1,131 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.item__create{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(245,245,245);
+  overflow: scroll;
+}
+
+.item__header{
+  height:128px ;
+  padding-top: 20px;
+  background-color:rgb(245, 245, 245);
+  &--logo{
+    text-align: center;
+    line-height: 128px;
+    &__size{
+      height: 50px;
+      width: 200px;
+    }
+  }
+
+}
+
+.item__contents{
+  width: 700px;
+  padding:30px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.item__content{
+
+}
+
+.item__info{
+    form{
+      display: flex;
+      flex-direction: column;
+    }
+  &--image{
+    height:112px;
+    background-color:rgb(245,245,245);
+    border: 1px dotted black;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &--shipping_image{
+    margin-bottom:20px;
+    &--input{
+      width: 100%;
+      height: 100%;
+      margin-top: 8px;
+      display: none;
+    &--icon{
+
+    }
+    }
+  }
+  &--name{
+    padding-top: 20px;
+    margin-bottom:20px;
+    &--input{
+      height:48px;
+      border: 0.5px solid #bfbfbf;
+      border-radius: 10px;
+      outline: 0;
+      padding: 10px;
+      margin-bottom: 20px;
+      &:focus{
+        border: 0.5px solid blue;
+      }
+    }
+  }
+  &--detail{
+    margin-bottom:20px ;
+    &--input{
+      height: 154px;
+      padding: 10px;
+      border: 0.5px solid #bfbfbf;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      outline: 0;
+      &:focus{
+        border:0.5px solid blue;
+      }
+    }
+  }
+}
+
+.item__shipping-show{
+  margin-bottom: 20px;
+}
+
+.fa{
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.item__shipping__btn{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  &--ship{
+    height: 48px;
+    width: 360px;
+    color: white;
+    background-color: red;
+    border-radius:5px;
+    line-height: 48px;
+    margin-bottom: 24px;
+  }
+  &--draft{
+    height: 48px;
+    width: 360px;
+    border-radius: 5px;
+    background-color:#bfbfbf;
+    line-height: 48px;
+    margin-bottom:24px;
+  }
+}
+
+.item__content{
+  height: calc(100vh - 56px);
+  padding: 20px;
+}
