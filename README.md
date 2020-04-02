@@ -15,9 +15,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|birth_year|string|null: false|
-|birth_month|string|null: false|
-|birth_day|string|null: false|
+|birthday|string|null: false|
 
 <!-- |value|integer||
 |age|integer|null: false|
