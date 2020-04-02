@@ -2,15 +2,11 @@
 = render partial: 'header'
 
 -# メインボディ
-.index--mainvisual
-  =  render  partial: 'mainVisual' 
-  %br
-  =  render  partial: 'topIntroduction'
-  %br
-  =  render  partial: 'topMiddle'
+= render partial: 'mainVisual' 
+= render partial: 'topIntroduction'
+= render partial: 'topMiddle'
+= render partial: 'topkeyfeatures'
+= render partial: 'pickupcontainer'
 
-  = render partial: 'topkeyfeatures'
-  = render partial: 'pickupcontainer'
-  
 -# フッター
 = render partial: 'footer'
