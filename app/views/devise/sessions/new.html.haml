@@ -2,20 +2,16 @@
   .container__header
     = image_tag '/logo/logo.png'
   .container__main
-    -# %h2 Log in
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
-        -# %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "top-input"
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholdeｒ: "メールアドレス", class: "top-input"
       .field
-        -# %br/
-        = f.password_field :password, autocomplete: "current-password", :placeholder => "パスワード"
+        = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
       - if devise_mapping.rememberable?
         .field{ class: 'hidden' }
           = f.check_box :remember_me, checked: "checked"
           = f.label :remember_me
       .actions{ class: 'loginBtn' }
-        -# %br/
         = f.submit "ログイン"
     .container__main__devise
       - if devise_mapping.registerable? && controller_name != 'registrations'
