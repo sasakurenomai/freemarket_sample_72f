@@ -1,0 +1,154 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 全体的に最初は自分のPCにあったサイズで実装
+
+a{
+  color: black;
+  text-decoration: none;
+}
+//左側のコンテンツについて記述
+.user__show{
+  height: 100vh;
+  width: 100vw;
+  background-color:rgb(245,245,245);
+  overflow: scroll;
+}
+
+.l-container{
+  width: 1120px;
+  margin: 40px auto 0;
+  display: flex;
+}
+
+.left--content{
+  display: flex;
+  margin-right: 40px;
+  flex-direction: column;
+}
+
+a.link_order{
+  height: 48px;
+  width: 280px;
+  font-size: 14px;
+  font-weight: 100;
+  background-color: #fff;
+  padding: 16px;
+  border-bottom:0.5px solid rgba(0,0,0,0.1);
+  position: relative;
+  i{
+    font-size: 20px;
+    position: absolute;
+    right: 5px;
+  }
+  &:hover{
+    background-color: #fafafa;
+  }
+}
+
+h3.setting--logo{
+  font-weight: 900;
+  margin-top: 40px;
+}
+
+//右側のコンテンツについて記述
+.right--content{
+  width: 700px;
+}
+
+.mypage{
+  &-user-icon{
+    height: 200px;
+    position: relative;
+    background-color: rgba(224, 153, 153, 0.5);
+    a{
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      margin: 0 auto;
+    }
+    &--link{
+      height: 111px;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  }
+  &-user__info{
+    display: flex;
+  }
+  &-tabs{
+    height: 74px;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+  }
+  &-go-list{
+    height: 88px;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    line-height: 56px;
+    
+    a{
+      display: block;
+      background-color:rgb(245,245,245);
+      &:hover{
+        background-color:rgba(245,245,245,0.5);
+      }
+    }
+  }
+}
+
+//お知らせについて
+.notification{
+  width: 50%;
+  text-align: center;
+  line-height: 74px;
+}
+
+//やることリストについて
+.todo{
+  width: 50%;
+  text-align: center;
+  line-height: 74px;
+}
+
+.tab-content{
+  background-color: #fff;
+}
+
+.mypage-tab-container{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 40px;
+  &--head{
+    height: 72px;
+    font-weight: 500;
+    line-height: 72px;
+    padding: 0 16px;
+  }
+  &--tabs{
+    width: 100%;
+    height: 74px;
+    display: flex;
+    background-color: #fff;
+    a{
+      display: block;
+    }
+  }
+}
+
+.dealing--tab{
+  width: 50%;
+  text-align: center;
+  line-height: 74px;
+}
+
+.dealed--tab{
+  width: 50%;
+  text-align: center;
+  line-height: 74px;
+}
