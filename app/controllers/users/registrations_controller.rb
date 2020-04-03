@@ -11,7 +11,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
-  #   super
+  #   params[:user][:birthday] = birthday_join
+  #   @user = User.new(user_params)
+  # end
+ 
+  # private 
+  #   def user_params
+  #    params.require(:user).permit(:birthday)
+  #   end
+ 
+  #   def birthday_join
+  #    # パラメータ取得
+  #     date = params[:user][:birthday]
+ 
+  #    # 年月日別々できたものを結合して新しいDate型変数を作って返す
+  #     Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+  #   end
+ 
+
+  # private
+  # def profile_params
+  #   params.require(:user).permit(:nickname, :email)
+    
   # end
 
   # GET /resource/edit

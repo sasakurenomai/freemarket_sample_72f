@@ -1,13 +1,13 @@
-.register-wrapper
-  .register-header
+.wrapper
+  .header
     .image 
       = image_tag "/logo/logo.png", width:'185px', height:'49px'
     .progress-bar
-  .single-main
-    .single-container
-      .single-head 会員情情報
+  .register-main
+    .register-container
+      .register-head 会員情情報
       .register-form
-        .single-content
+        .register-form__content
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             = render "devise/shared/error_messages", resource: resource
             .form-group
@@ -63,7 +63,7 @@
               %span.form-require 必須
               %br/
               .input-field
-                != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'birth', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                = f.date_select(:birthday,with_css_classes:'birthday',use_month_numbers:true, start_year:Time.now.year, end_year:1900, )
             .form-group
               %p.info-text2 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
             .form-group
