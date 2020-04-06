@@ -59,10 +59,14 @@
     .item-details-wrapper__container--other__navi
       .item-details-wrapper__container--other__navi__left
         = link_to '#' do
-          &lt;&lt; Prev
+          = icon('fas', 'angle-double-left')
+          -# 前のアイテムの商品名
+          Prev
       .item-details-wrapper__container--other__navi__right
         = link_to '#' do
-          Next &gt;&gt;
+          -# 次のアイテムの商品名
+          Next
+          = icon('fas', 'angle-double-right')
   .item-details-wrapper__container.item-details-wrapper__container--other.item-details-wrapper__container--border
     .item-details-wrapper__container--other__title
       %h1 {ユーザー名}さんのその他の出品
