@@ -108,6 +108,9 @@
       padding: 0;
       &__navi {
         display: flex;
+        .fa, .fas {
+          color: rgba(0, 0, 0, 0.5);
+        }
         &__left {
           width: calc(100% / 2);
           text-align: left;
@@ -165,7 +168,7 @@
       li {
       display: inline;
       .fa, .fas {
-        color: rgba(0, 0, 0, 0.6);
+        color: rgba(0, 0, 0, 0.5);
       }
       }
     }
