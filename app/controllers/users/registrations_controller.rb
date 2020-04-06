@@ -1,39 +1,37 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @user = User.new      #superのままでも可
+  end
 
   # POST /resource
-  # def create
-  #   params[:user][:birthday] = birthday_join
-  #   @user = User.new(user_params)
-  # end
- 
-  # private 
-  #   def user_params
-  #    params.require(:user).permit(:birthday)
-  #   end
- 
-  #   def birthday_join
-  #    # パラメータ取得
-  #     date = params[:user][:birthday]
- 
-  #    # 年月日別々できたものを結合して新しいDate型変数を作って返す
-  #     Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
-  #   end
- 
+  def create
+    super
+  end
 
-  # private
-  # def profile_params
-  #   params.require(:user).permit(:nickname, :email)
-    
-  # end
+  protected
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_address(@address.attributes)
+    @user.save
+    sign_in(:user, @user)
+  end
+
 
   # GET /resource/edit
   # def edit
