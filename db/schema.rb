@@ -26,11 +26,34 @@ ActiveRecord::Schema.define(version: 2020_04_03_111340) do
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 2020_04_03_081253) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "shipping_first_name", null: false
+    t.string "shipping_last_name", null: false
+    t.string "shipping_first_name_kana", null: false
+    t.string "shipping_last_name_kana", null: false
+    t.integer "zipcode", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "room"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "nickname", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.date "birthday", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -41,4 +64,5 @@ ActiveRecord::Schema.define(version: 2020_04_03_111340) do
   end
 
   add_foreign_key "item_images", "items"
+  add_foreign_key "addresses", "users"
 end

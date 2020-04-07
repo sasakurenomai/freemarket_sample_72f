@@ -7,14 +7,22 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 ### Usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+
+|nickname|string|null: false, unique: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
+|birthday|string|null: false|
+
+<!-- |value|integer||
 |age|integer|null: false|
-|nickname|string|null: false, unique: true|
-|value|integer||
 |profile_text|text||
 |profile_image|string||
+|name|string|index: true, null: false| -->
+
 #### Association
 - has_many :items, through: :users_items
 - has_many :users_items
@@ -26,11 +34,16 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key:true|
+|shipping_first_name|string|null: false|
+|shipping_last_name|string|null: false|
+|shipping_first_name_kana|string|null: false|
+|shipping_last_name_kana|string|null: false|
 |zip_code|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null :false|
 |street|string|null: false|
-|building|string||
+|room|string||
+|phone_number|string||
 #### Association
 - belongs_to :user
 
