@@ -24,6 +24,7 @@
   padding:30px;
   background-color: white;
   margin: 0 auto;
+  overflow: scroll;
 }
 
 .item__info{
@@ -78,6 +79,20 @@
       }
     }
   }
+  &--price{
+    margin-bottom: 20px;
+    &--input{
+      height: 30px;
+      padding: 10px;
+      border: 0.5px solid #bfbfbf;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      outline: 0;
+      &:focus{
+        border: 0.5px solid blue;
+      }
+    }
+  }
 }
 
 .item__shipping-show{
@@ -99,7 +114,7 @@
     height: 48px;
     width: 360px;
     color: white;
-    background-color: red;
+    background-color: #3CCACE;
     border-radius:5px;
     line-height: 48px;
     margin-bottom: 24px;
