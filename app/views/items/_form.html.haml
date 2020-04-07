@@ -1,0 +1,26 @@
+.item__info
+  =form_with model: @item, local:true do |f|
+    =f.label :item_image, '出品画像', class: "item__info--shipping_image"
+    .item__info--image 
+      #image-box
+        -# =f.label :item_image, class:"item__info--shipping_image--label" do
+        -#   %i.fa.fa-image.item__info--shipping_image--icon
+        =f.fields_for :item_images do |i|
+          .js-file_group{"data-index": "#{i.index}"}
+            =i.file_field :image_url , class: "js-file"
+            %span.js-remove
+              削除
+          -if @item.persisted?
+            =i.check_box :_destroy, data: { index: i.index }, class: 'hidden-destroy'
+          -if @item.persisted?
+            .js-file_group{"data-index": "#{@item.item_images.count}"}
+              = file_field_tag :image_url, name: "item[item_images_attributes][#{@item.item_images.count}][image_url]", class: "js-file"
+              .js-remove
+                削除
+    =f.label :name, '商品名', class: "item__info--name"
+    =f.text_field :name, class: "item__info--name--input"
+    =f.label :details, '商品の説明', class: "item__info--detail"
+    =f.text_area :details, class:"item__info--detail--input"
+    =f.label :price, '販売価格', class: "item__info--price"
+    =f.number_field :price, class:"item__info--price--input"
+    =f.submit "出品する", class:"item__shipping__btn--ship"
