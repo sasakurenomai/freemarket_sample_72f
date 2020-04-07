@@ -34,11 +34,16 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key:true|
+|shipping_first_name|string|null: false|
+|shipping_last_name|string|null: false|
+|shipping_first_name_kana|string|null: false|
+|shipping_last_name_kana|string|null: false|
 |zip_code|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null :false|
 |street|string|null: false|
-|building|string||
+|room|string||
+|phone_number|string||
 #### Association
 - belongs_to :user
 
