@@ -8,7 +8,7 @@
         =form_with model: @item, local:true do |f|
           =f.label :item_image, '出品画像', class: "item__info--shipping_image"
           .item__info--image 
-            .image-box
+            #image-box
               -# =f.label :item_image, class:"item__info--shipping_image--label" do
               -#   %i.fa.fa-image.item__info--shipping_image--icon
               =f.fields_for :item_images do |i|
