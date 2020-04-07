@@ -1,7 +1,7 @@
 .buy-header
   %h1
-    %a(href="#")
-      %img(src="/logo/logo.png" alt="")/
+    = link_to "#" do
+      = image_tag "/logo/logo.png" 
 .buy-main
   .buy-main__sction
     .buy-main__sction__head
@@ -10,7 +10,7 @@
       .buy-main__sction__item__inner
         .buy-main__sction__item__inner__box
           %h3.img
-            %img(src="#" alt="")/
+            = image_tag "/a001.png"
           .buy-main__sction__item__inner__box__detail
             %p.name 商品名
             %p.price 
@@ -35,7 +35,7 @@
           .buy-main__sction__content__inner__form__payment
             .buy-main__sction__content__inner__form__payment__box
               %h3 支払い方法
-              %a(href="#")
+              = link_to "#" do
                 %p.register
                   %i
                     %before
@@ -43,7 +43,7 @@
           .buy-main__sction__content__inner__form__address
             .buy-main__sction__content__inner__form__address__box
               %h3 配送先
-              %a(href="#")
+              = link_to "#" do
                 %p.register
                   %i
                     %before
@@ -55,14 +55,17 @@
   .buy-footer__nav
     %ul.clear
       %li
-        %a(href="#") プライバシーポリシー
+      = link_to "#" do 
+        プライバシーポリシー
       %li
-        %a(href="#") 利用規約
+      = link_to "#" do 
+        利用規約 
       %li
-        %a(href="#") 特定商取引に関する表記
+      = link_to "#" do 
+        特定商取引に関する表記
       %after
   .buy-footer__logo
-    %a(href="#")
-      %img(src="/logo/logo-white.png" alt="")/
+    = link_to "#" do
+      = image_tag "/logo/logo-white.png" 
   %p
     %small ©️ Frima,inc.
