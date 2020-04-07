@@ -76,3 +76,6 @@ gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'

@@ -18,7 +18,6 @@
               .input-field
                 = f.text_field :shipping_first_name, placeholder: "例) 山田"
                 = f.text_field :shipping_last_name, placeholder: "例) 太郎"
-                
             .form-group
               = f.label :"お名前(カナ)"
               %span.form-require 必須
@@ -68,7 +67,7 @@
               %br/
               .input-field
                 = f.telephone_field :phone_number, placeholder: "例) ハイフンはなしで記入"
-
+                
             .form-group
               %p.info-text2 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
             .form-group
