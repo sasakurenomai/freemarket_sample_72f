@@ -15,41 +15,36 @@
   width: 100%;
   margin: 0 auto;
   padding: 35px 0 0 0;
-
   &__subtitle{
     text-shadow: 0 0 5px rgba(0,0,0,0.4);
     font-size: 60px;
     line-height: 1.2;
     color: #fff;
   }
-
   &__text{
     text-shadow: 0 0 5px rgba(0,0,0,0.4);
     font-size: 18px;
     color: #fff;
     line-height: 1.77;
     margin: 16px 0 0 0;
-  }  
+  }
 }
 
 .content__btn{
     display: flex;
     margin: 24px 0 0 0;
-
   img{
     width: 100%;
     vertical-align: bottom;
     }
-
   a{
     width: 180px;
     margin-right: 10px;
-  }   
+  }
 }
 
 .topIntroduction{
   padding: 60px 20px;
-
 }
 
 .subtitle{
@@ -59,8 +54,11 @@
   font-size: 26px;
   text-align: center;
   line-height: 1.4;
-  position: relative;
-  .subtitle::after{
+  h2{
+      position: relative;
+      padding-bottom: 25px;
+    }
+  h2::after{
     content: "";
     width: 70px;
     height: 4px;
@@ -78,7 +76,6 @@
   max-width: 1020px;
   width: 100%;
   margin: 0 auto;
-
   .list{
     width: 30%;
     margin: 15px 5% 0 0;
@@ -86,11 +83,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     .list__pict{
       position: relative;
       margin-bottom: 20px;
-      
       .number{
         display: inline-block;
         position: absolute;
@@ -104,18 +99,17 @@
         background-color: #3CCACE;
         color: #fff;
       }
-      
       img{
         width: 100%;
         vertical-align: bottom;
-      }  
+      }
     }
-  }   
+  }
 }
-   
+
 .list__pict{
-        position: relative;
-        margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .list__text{
@@ -134,8 +128,6 @@
   margin: 16px 0 0;
 }
 
-
-
 .topMiddleDl{
   height: 400px;
   background-image: url("/pict/bg-topMiddleDl-pict.jpg");
@@ -143,7 +135,6 @@
   background-position: bottom right;
   display: flex;
   align-items: center;
-  
 }
 
 .topMiddleDl__inner{
@@ -152,9 +143,7 @@
   text-align: left;
   max-width: 1040px;
   width: 100%;
-  margin: 0 auto;  
-
-  
+  margin: 0 auto;
 }
 
 .subtitle2{
@@ -162,24 +151,20 @@
     line-height: 1.4;
     font-weight: bold;
   }
-  
+
   .text2{
     font-size: 18px;
     line-height: 1.5;
     margin: 20px 0 30px;
-  }  
-
+  }
 
 .btn2{
     display: flex;
     width: 180px;
-
   img{
     vertical-align: bottom;
     }
-
   a{
     margin-right: 10px;
   }   
 }
-

@@ -1,63 +1,27 @@
 -# ヘッダー
 = render partial: 'header'
-.main
-  .main__container
-    .main__container__header
-      .main__container__header__categoly
-        %ul
-          %li
-            %a(href="") おもちゃ
-          %li
-            %a(href="") タレントグッズ
-          %li
-            %a(href="") その他
-          %li
-            %a(href="") トレーディングカード
-          %li
-            %a(href="") フィギュア
-          %li
-            %a(href="") コミック/アニメグッズ
-          %li
-            %a(href="") 美術品
-    .main__container__body
-      %h1 おもちゃ・ホビー・グッズの商品一覧
-      .main__container__body__items
-        .main__container__body__items__box
-          %a(href="#")
-            .main__container__body__items__box__photo
+
+.all-item
+  .all-item__main
+    .all-item__main__left
+    .all-item__main__right
+      .all-item__main__right__box
+        %h2 〜〜〜 の商品一覧
+      .all-item__main__right__lists
+        .all-item__main__right__lists__list
+          = link_to "#", class: "link" do
+            .all-item__main__right__lists__list__img
               = image_tag "/a001.png"
-            .main__container__body__items__box__type
-              .main__container__body__items__box__type__praice
-                .main__container__body__items__box__type__praice__en
-                  ¥300円
-              .main__container__body__items__box__type__name
-                %h3 商品名
-    .main__container__page
-      %ul
-        %li
-          %ul
-            %li.cell.num 1
-            %li.cell
-              %a(href="#") 2
-            %li.cell
-              %a(href="#") 3
-            %li.cell
-              %a(href="#") 4
-            %li.cell
-              %a(href="#") 5
-          = paginate @users
-        %li.next
-          %ul
-            %li.cell
-              %a(href="#") 
-                %i.fa.fa-angle-right
-            %li.cell
-              %a(href="#")
-                %i.fa.fa-angle-double-right
-    .main__container__footer
-      .main__container__footer__title
-        %h3 おもちゃ・ホビー・グッズ
-      .main__container__footer__text
-        %p 説明テキスト入力
+            .all-item__main__right__lists__list__body
+              %h3.name product1
+              .all-item__main__right__lists__list__body__details
+                %ul
+                  %li 10000円
+                  %li
+                    %i ★ 0
+                %p (税込)
+    %after
+= paginate @users
+
 -# フッター
 = render partial: 'footer'
