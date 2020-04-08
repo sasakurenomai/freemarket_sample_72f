@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_050139) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "details", null: false
+    t.integer "user_id", null: false
+    t.integer "buyer_id"
     t.integer "sales_status", null: false
     t.integer "item_status", null: false
     t.string "brand"
@@ -50,14 +52,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_050139) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "buyer_id"
-    t.integer "seller_id", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
