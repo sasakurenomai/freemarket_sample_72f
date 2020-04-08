@@ -12,7 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string  :shipping_how_to
       t.integer :shipping_area,   null: false
       t.integer :shipping_cost,   null: false
-      t.string  :shipping_bays,   null: false
+      t.string  :shipping_days,   null: false
 
       t.timestamps
     end

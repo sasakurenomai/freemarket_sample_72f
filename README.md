@@ -56,7 +56,7 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |shipping_how_to|integer||
 |shipping_area|integer|null: false|
 |shipping_cost|integer|null: false|
-|shipping_bays|string|null: false|
+|shipping_days|string|null: false|
 #### Association
 - has_many   :item_images, dependent: :destroy
 - belongs_to :users

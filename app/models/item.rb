@@ -9,7 +9,7 @@ class Item < ApplicationRecord
         :price
         :shipping_area
         :shipping_cost
-        :shipping_bays
+        :shipping_days
     ]
 
     columns.each do |column|
