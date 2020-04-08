@@ -7,7 +7,6 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 ### Usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-
 |nickname|string|null: false, unique: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
