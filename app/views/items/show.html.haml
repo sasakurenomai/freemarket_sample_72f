@@ -12,7 +12,7 @@
             %tbody
               %tr
                 %th 出品者
-                %td #{@seller.nickname}
+                %td #{@item.user.nickname}
               %tr
                 %th カテゴリ
                 %td カテゴリーを表示
@@ -69,7 +69,7 @@
           = icon('fas', 'angle-double-right')
   .item-details-wrapper__container.item-details-wrapper__container--other.item-details-wrapper__container--border
     .item-details-wrapper__container--other__title
-      %h1 #{@seller.nickname}さんのその他の出品
+      %h1 #{@item.user.nickname}さんのその他の出品
     .item-details-wrapper__container--other__items
       .item-details-wrapper__container--other__items__item-box
         .item-details-wrapper__container--other__items__item-box__photo
