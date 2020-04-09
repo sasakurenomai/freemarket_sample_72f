@@ -4,7 +4,14 @@ class ItemsController < ApplicationController
 
   def new
   end
-
+  
+  def show
+    @item = Item.find(params[:id])
+  end
+  
+  def edit
+  end
+  
   def destroy
     item = Item.find(params[:id])
     item.destroy
