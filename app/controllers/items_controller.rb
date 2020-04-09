@@ -14,8 +14,11 @@ class ItemsController < ApplicationController
   end
   
   def destroy
-    @item.destroy
-    render("items/destroy")
+    if @item.destroy
+      render("items/destroy")
+    else
+      redirect_to :back, alert: '商品の出品取り下げ時にエラーが発生しました。'
+    end
   end
 
   private
