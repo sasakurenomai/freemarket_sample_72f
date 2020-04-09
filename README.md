@@ -23,7 +23,8 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |name|string|index: true, null: false| -->
 
 #### Association
-- has_many :items, dependent: :destroy
+- has_many :items, through: :users_items
+- has_many :users_items
 - has_many :likes
 - has_many :comments
 - has_one  :address
@@ -45,13 +46,21 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 #### Association
 - belongs_to :user
 
+### Users_Itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|buyer_id|integer|foreign_key:true|
+|seller_id|integer|null:false, foreign_key:true|
+|item_id|integer|null:false, foreign_key:true|
+#### Association
+belongs_to  :user
+belongs_to  :item
+
 ### Itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |details|string|null: false|
-|user_id|integer|null:false, foreign_key: true|
-|buyer_id|integer||
 |sales_status|integer|null:false|
 |item_status|integer|null: false|
 |brand|string||
@@ -60,10 +69,11 @@ git clone https://github.com/ymkthr/freemarket_sample_72f.git
 |shipping_how_to|integer||
 |shipping_area|integer|null: false|
 |shipping_cost|integer|null: false|
-|shipping_days|string|null: false|
+|shipping_bays|string|null: false|
 #### Association
-- has_many   :item_images, dependent: :destroy
-- belongs_to :users
+- has_many   :users, through: :users_items
+- has_many   :users_items
+- has_many   :item_images
 - belongs_to :category
 
 ### Item_imagesテーブル
