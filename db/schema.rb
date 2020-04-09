@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 2020_04_07_050139) do
     t.string "shipping_days", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 2020_04_03_081253) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "shipping_first_name", null: false
+    t.string "shipping_last_name", null: false
+    t.string "shipping_first_name_kana", null: false
+    t.string "shipping_last_name_kana", null: false
+    t.integer "zipcode", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "room"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,4 +71,5 @@ ActiveRecord::Schema.define(version: 2020_04_07_050139) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
 end
