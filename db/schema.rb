@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_101514) do
+ActiveRecord::Schema.define(version: 2020_04_07_050139) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "shipping_first_name", null: false
+    t.string "shipping_last_name", null: false
+    t.string "shipping_first_name_kana", null: false
+    t.string "shipping_last_name_kana", null: false
+    t.integer "zipcode", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "room"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_101514) do
     t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-ActiveRecord::Schema.define(version: 2020_04_07_050139) do
+  end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image_url", null: false
@@ -39,26 +56,9 @@ ActiveRecord::Schema.define(version: 2020_04_07_050139) do
     t.string "shipping_how_to"
     t.integer "shipping_area", null: false
     t.integer "shipping_cost", null: false
-    t.string "shipping_days", null: false
+    t.string "shipping_days", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-ActiveRecord::Schema.define(version: 2020_04_03_081253) do
-
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "shipping_first_name", null: false
-    t.string "shipping_last_name", null: false
-    t.string "shipping_first_name_kana", null: false
-    t.string "shipping_last_name_kana", null: false
-    t.integer "zipcode", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "street", null: false
-    t.string "room"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
