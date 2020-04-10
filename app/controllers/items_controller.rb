@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :destroy]
 
   def index
-    @item = Item.find(1)
+    @items = Item.all.includes(:item_images)
     @users = User.page(params[:page]).per(5)
   end
 

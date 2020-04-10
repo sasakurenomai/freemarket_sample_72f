@@ -8,18 +8,17 @@
       .all-item__main__right__box
         %h2 〜〜〜 の商品一覧
       .all-item__main__right__lists
-        - current_user.items.each do |item|
+        - @items.each do |item|
           .all-item__main__right__lists__list
             = link_to "#", class: "link" do
               .all-item__main__right__lists__list__img
-                = image_tag "/a001.png"
+                - item.item_images.each do |m|
+                  = image_tag m.image_url.to_s
               .all-item__main__right__lists__list__body
-                %h3.name 
-                  = @item.name
+                %h3.name= item.name
                 .all-item__main__right__lists__list__body__details
                   %ul
-                    %li 
-                      = @item.price
+                    %li= item.price
                     %li
                       %i ★ 0
                   %p (税込)
