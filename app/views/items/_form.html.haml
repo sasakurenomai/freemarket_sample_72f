@@ -3,8 +3,6 @@
     =f.label :item_image, '出品画像（一枚以上必須）', class: "item__info--shipping_image"
     .item__info--image 
       #image-box
-        -# =f.label :item_image, class:"item__info--shipping_image--label" do
-        -#   %i.fa.fa-image.item__info--shipping_image--icon
         =f.fields_for :item_images do |i|
           .js-file_group{"data-index": "#{i.index}"}
             =i.file_field :image_url , class: "js-file"
@@ -21,12 +19,16 @@
     =f.text_field :name, class: "item__info--name--input"
     =f.label :details, '商品の説明（必須）', class: "item__info--detail"
     =f.text_area :details, class:"item__info--detail--input"
-    =f.label :price, '販売価格（必須）', class: "item__info--price"
-    =f.number_field :price, class:"item__info--price--input"
+    #item_category-box
+      =f.label 'カテゴリー', class: "item__info__category--parent"
+      %span
+        = f.collection_select :category, Category.roots, :id, :name, {prompt: "---" }, {class: "listing-select-wrapper__box--select", id: "parent_category"}
     =f.label :item_status_id, "商品の状態", class:"item__info--sales_status"
     =f.collection_select :item_status_id, ItemStatus.all, :id, :status
     =f.label :shipping_area_id, "発送元の地域", class: "item__info--shipping_area"
     =f.collection_select :shipping_area_id, ShippingArea.all, :id, :name
     =f.label :shipping_days_id, "発送までの日数", class: "item__info--shipping_days"
     =f.collection_select :shipping_days_id, ShippingDays.all, :id, :days
+    =f.label :price, '販売価格（必須）', class: "item__info--price"
+    =f.number_field :price, class:"item__info--price--input"
     =f.submit "出品する", class:"item__shipping__btn--ship"
