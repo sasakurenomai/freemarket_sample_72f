@@ -15,7 +15,7 @@
           %label{class: "top-label"} カード番号
           %span{class: "top-span"} 必須
           %br
-          = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+          %input{class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "number", id: "card_number"}
           %br
           
           %ul
@@ -74,14 +74,17 @@
           %label セキュリティコード
           %span{class: "code-span"} 必須
           %br
-          = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+          %input{class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", type: "number", id: "cvc"}
           #card_token
           %ul
             %li{class: "error-text2"} 必須項目です  半角数字で入力してください
           .seqcode
             %span{class: "seq-span"} ？
             %label{class: "seq-label"} カード裏面の番号とは？
-
+            .seqcode-info
+              %span{class: "seq-info-label"} カードの裏面をご確認ください
+              %br
+              %img{src: "https://pcweb-assets.mercdn.net/assets/img/signup/seq-card.png?3780252616", height:"100", width:"200"}  
           = submit_tag "登録する", id: "token_submit"
           
   .kurejitto-container__footer

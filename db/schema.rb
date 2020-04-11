@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_050139) do
     t.string "shipping_how_to"
     t.integer "shipping_area", null: false
     t.integer "shipping_cost", null: false
-    t.string "shipping_days", default: "", null: false
+    t.string "shipping_days", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

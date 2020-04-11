@@ -78,6 +78,12 @@
         padding-left: 10px;
       }
 
+      input[type="number"]::-webkit-outer-spin-button, 
+      input[type="number"]::-webkit-inner-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+      } 
+
       .error-text1{
         padding: 5px 30px 0px 0px;
         color: red;
@@ -204,6 +210,13 @@
         border: solid 1px gray;
         padding-left: 10px;
       }
+      
+      input[type="number"]::-webkit-outer-spin-button, 
+      input[type="number"]::-webkit-inner-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      } 
+
 
       .error-text2{
         color: red;
@@ -221,17 +234,14 @@
         border: none;
       }
 
-      .seq-code{
-        height:40px;
-        width: 100px;
+      .seqcode{
+        position: relative;
         
       }
 
       .seq-label{
         font-weight:inherit;
         color:skyblue;
-        
-        
       }
 
       .seq-span{
@@ -243,8 +253,43 @@
         margin-right: 0px;
         margin-left: 105px;
         vertical-align: 6px;
-
       }
+
+      .seqcode > .seqcode-info{
+        visibility: hidden;
+        opacity: 0;
+        transition: 1.0s;
+        height:150px;
+        width: 300px;
+        background-color: #EEEEEE;
+        border-radius: 7px;
+        position:absolute;
+        top:30px;
+        left: 50px;
+
+        span{
+          display: inline-block;
+          margin-top: 10px;
+          margin-left: 60px;
+          font-size: 13px;  
+        }
+        
+        img{
+          margin-top: 10px;
+          margin-left: 50px;
+
+        }
+      } 
+
+
+      .seqcode > .seq-label:hover + .seqcode-info {
+        visibility: visible;
+        opacity: 1.0;
+        
+      } 
+
+      
+
     }
   }
 }
