@@ -1,4 +1,4 @@
-= render partial: 'header'
+= render partial: 'items/header'
 .item-details-wrapper
   .item-details-wrapper__container
     .item-details-wrapper__container__inner
@@ -68,21 +68,31 @@
         %p ここには商品の説明文が表示されます。
       - if user_signed_in? && current_user.id == @item.user.id
         .item-details-wrapper__container__inner__body__edit
-          = link_to edit_item_path, class: 'far fa-edit' do
+          = link_to edit_item_path(@item), class: 'far fa-edit' do
             編集する
-          = link_to item_path, method: 'delete', class: 'far fa-trash-alt', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
+          = link_to item_path(@item), method: 'delete', class: 'far fa-trash-alt', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
             出品を取り下げる
   .item-details-wrapper__container.item-details-wrapper__container--border
     .item-details-wrapper__container__inner
       .item-details-wrapper__container__inner__comments
         .item-details-wrapper__container__inner__comments__user-pic
           = image_tag '/a001.png'
-        .item-details-wrapper__container__inner__comments__comment
-          %p コメントが表示される
+        .test
+          - if @comments
+            - @comments.each do |comment|
+              %strong
+              = link_to comment.user.nickname, "/users/#{comment.user_id}"
+              .item-details-wrapper__container__inner__comments__comment
+                = comment.text
       .item-details-wrapper__container__inner__comments-form
-        = form_with model: @comments do |form|
-          = form.text_area :text, placeholder: 'コメント...'
-          = form.submit 'コメントする', { id: 'comment-send' }
+        - if current_user
+          = form_for [@item, @comment] do |form|
+            = form.text_area :text, placeholder: 'コメント...'
+            = form.submit 'コメントする', { id: 'comment-send' }
+        - else
+          %strong
+            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+            
   .item-details-wrapper__container.item-details-wrapper__container--other
     .item-details-wrapper__container--other__navi
       .item-details-wrapper__container--other__navi__left
@@ -110,4 +120,4 @@
       %li.item-details-wrapper__category__child<
         = link_to '#' do
           子カテゴリ
-= render partial: 'footer'
+= render partial: 'items/footer'
