@@ -1,5 +1,4 @@
 = render 'items/header'
-
 .user__show
   .l-container
     .left--content
@@ -69,7 +68,7 @@
       %a.link_order(href="#")
         電話番号の確認
         %i.fa.fa-angle-right
-      %a.link_order(href="#")
+      %a.link_order{"data-method": "delete", href: "#{destroy_user_session_path}"}
         ログアウト
         %i.fa.fa-angle-right
     .right--content
@@ -102,5 +101,4 @@
           %a.dealed--tab(href="#")
             過去の取引
         .mypage-item
-
 = render 'items/footer'
