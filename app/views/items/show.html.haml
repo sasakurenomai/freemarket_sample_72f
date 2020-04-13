@@ -1,143 +1,113 @@
-= render partial: 'header'
+= render partial: 'items/header'
 .item-details-wrapper
   .item-details-wrapper__container
     .item-details-wrapper__container__inner
       .item-details-wrapper__container__inner__title
-        %h1 {商品タイトル}
+        %h1 #{@item.name}
       .item-details-wrapper__container__inner__body
         .item-details-wrapper__container__inner__body__photo
-          = image_tag '/a004.png'
+          = image_tag "#{@item.item_images.find_by(item_id: @item.id).image_url}"
         .item-details-wrapper__container__inner__body__property
           %table{:border => 1}
             %tbody
               %tr
                 %th 出品者
-                %td 出品者名
+                %td #{@item.user.nickname}
               %tr
                 %th カテゴリ
                 %td カテゴリーを表示
               %tr
                 %th ブランド
-                %td ブランド表示
+                %td #{@item.brand}
               %tr
                 %th 商品の状態
-                %td 商品のコンディションを表示
+                %td<
+                  - case @item.item_status
+                    - when 0 then
+                      新品、未使用
+                    - when 1 then
+                      未使用に近い
+                    - when 2 then
+                      目立った傷や汚れなし
+                    - when 3 then
+                      やや傷や汚れあり
+                    - when 4 then
+                      やや傷や汚れあり
+                    - when 5 then
+                      傷や汚れあり
               %tr
                 %th 送料の負担
-                %td XX
+                %td<
+                  - case @item.shipping_cost
+                    - when 0 then
+                      発送元払い
+                    - when 1 then
+                      着払い
               %tr
                 %th 配送の方法
-                %td XX
+                %td #{@item.shipping_how_to}
               %tr
                 %th 発送元地域
-                %td XX
+                %td #{@item.shipping_area}
               %tr
                 %th 発送日の目安
-                %td XX~XX日で発送
+                %td #{@item.shipping_days}
       .item-details-wrapper__container__inner__body__price
         %p<
-          ¥{10,000}
+          ¥ #{@item.price}
           %s.item-details-wrapper__container__inner__body__price--small><
             （税込）送料込み
-      .item-details-wrapper__container__inner__body__purcharseBtn
-        = link_to '#' do
-          %button 購入画面に進む
+      - if user_signed_in? && current_user.id == @item.user.id
+        .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
+          %button{:disabled => 'disabled'} 購入画面に進む
+      - else
+        .item-details-wrapper__container__inner__body__purcharseBtn
+          = link_to '#' do
+            %button 購入画面に進む
       .item-details-wrapper__container__inner__body__text
         %p ここには商品の説明文が表示されます。
+      - if user_signed_in? && current_user.id == @item.user.id
+        .item-details-wrapper__container__inner__body__edit
+          = link_to edit_item_path(@item), class: 'far fa-edit' do
+            編集する
+          = link_to item_path(@item), method: 'delete', class: 'far fa-trash-alt', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
+            出品を取り下げる
   .item-details-wrapper__container.item-details-wrapper__container--border
     .item-details-wrapper__container__inner
       .item-details-wrapper__container__inner__comments
         .item-details-wrapper__container__inner__comments__user-pic
           = image_tag '/a001.png'
-        .item-details-wrapper__container__inner__comments__comment
-          %p コメントが表示される
+        .test
+          - if @comments
+            - @comments.each do |comment|
+              %strong
+              = link_to comment.user.nickname, "/users/#{comment.user_id}"
+              .item-details-wrapper__container__inner__comments__comment
+                = comment.text
       .item-details-wrapper__container__inner__comments-form
-        = form_with model: @comments do |form|
-          = form.text_area :text, placeholder: 'コメント...'
-          = form.submit 'コメントする', { id: 'comment-send' }
+        - if current_user
+          = form_for [@item, @comment] do |form|
+            = form.text_area :text, placeholder: 'コメント...'
+            = form.submit 'コメントする', { id: 'comment-send' }
+        - else
+          %strong
+            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+            
   .item-details-wrapper__container.item-details-wrapper__container--other
     .item-details-wrapper__container--other__navi
       .item-details-wrapper__container--other__navi__left
-        = link_to '#' do
-          = icon('fas', 'angle-double-left')
-          -# 前のアイテムの商品名
-          Prev
+        - if @item.previous.present?
+          = link_to "/items/#{@item.previous.id}" do
+            = icon('fas', 'angle-double-left')
+            = @item.previous.name
       .item-details-wrapper__container--other__navi__right
-        = link_to '#' do
-          -# 次のアイテムの商品名
-          Next
-          = icon('fas', 'angle-double-right')
-  .item-details-wrapper__container.item-details-wrapper__container--other.item-details-wrapper__container--border
-    .item-details-wrapper__container--other__title
-      %h1 {ユーザー名}さんのその他の出品
-    .item-details-wrapper__container--other__items
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-  .item-details-wrapper__container.item-details-wrapper__container--other.item-details-wrapper__container--border
-    .item-details-wrapper__container--other__title
-      %h1 {カテゴリ}その他の出品
-    .item-details-wrapper__container--other__items
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
-      .item-details-wrapper__container--other__items__item-box
-        .item-details-wrapper__container--other__items__item-box__photo
-        .item-details-wrapper__container--other__items__item-box__text
-          %h3 {商品タイトル}
-          %p {¥1,000円}
+        - if @item.next.present?
+          = link_to "/items/#{@item.next.id}" do
+            = @item.next.name
+            = icon('fas', 'angle-double-right')
 
   .item-details-wrapper__category
-    -# カテゴリ実装時に編集する
+    -# カテゴリ機能が実装されてから反映する
     %ul
       %li<
         = link_to root_path do
@@ -150,4 +120,4 @@
       %li.item-details-wrapper__category__child<
         = link_to '#' do
           子カテゴリ
-= render partial: 'footer'
+= render partial: 'items/footer'
