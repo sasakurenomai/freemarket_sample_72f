@@ -9,7 +9,7 @@ $(function(){
   function appendChildrenBox(insertHTML){
     var childrenHTML = `<div class="listing-select-wrapper" id ="children_wrapper"> 
                           <div class="listing-select-wrapper__box">
-                            <select class="listing-select-wrapper__box--select" name = "" id="children_category">
+                            <select class="listing-select-wrapper__box--select item__info--shipping__select" name = "" id="children_category">
                               <option value = "---" data-category="---" >---</option>
                               ${insertHTML}
                             </select>
@@ -20,7 +20,7 @@ $(function(){
 
   function appendGrandchildrenBox(insertHTML){
     var grandchildrenHTML =`<div id ="grandchildren_wrapper"> 
-                              <select class="listing-select-wrapper__box--select" name = "item[category_id]" id="grandchildren_category">
+                              <select class="listing-select-wrapper__box--select item__info--shipping__select" name = "item[category_id]" id="grandchildren_category">
                                 <option value = "---" >---</option>
                                 ${insertHTML}
                               </select>
@@ -48,9 +48,6 @@ $(function(){
       })
       .fail(function(){
         alert('フォームの送信に失敗しました');
-      })
-      .always(function(){
-        $('').prop('disabled', false);
       })
     }else{
       $('#children_wrapper').remove();

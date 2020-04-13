@@ -5,7 +5,9 @@
       #image-box
         =f.fields_for :item_images do |i|
           .js-file_group{"data-index": "#{i.index}"}
-            =i.file_field :image_url , class: "js-file"
+            =i.file_field :image_url , class: "js-file", id: "image-file"
+            %label(for="image-file")
+              %i.fa.fa-camera
             %span.js-remove
               削除
           -if @item.persisted?
@@ -22,13 +24,17 @@
     #item_category-box
       =f.label 'カテゴリー', class: "item__info__category--parent"
       %span
-        = f.collection_select :category, Category.roots, :id, :name, {prompt: "---" }, {class: "listing-select-wrapper__box--select", id: "parent_category"}
+        = f.collection_select :category, Category.roots, :id, :name, {prompt: "---" }, {class: "listing-select-wrapper__box--select item__info--shipping__select", id: "parent_category"}
+    =f.label :brand, "ブランド名", class: "item__info--brand"
+    =f.text_field :brand, class:"item__info--brand--input"
     =f.label :item_status_id, "商品の状態", class:"item__info--sales_status"
-    =f.collection_select :item_status_id, ItemStatus.all, :id, :status
+    =f.collection_select :item_status_id, ItemStatus.all, :id, :status,{}, {class:"item__info--shipping__select"}
+    =f.label :charge_id, "配送料の負担", class: "item__info--charge"
+    =f.collection_select :charge_id, Charge.all,  :id, :charge, {}, {class: "item__info--shipping__select"}
     =f.label :shipping_area_id, "発送元の地域", class: "item__info--shipping_area"
-    =f.collection_select :shipping_area_id, ShippingArea.all, :id, :name
+    =f.collection_select :shipping_area_id, ShippingArea.all, :id, :name, {},{class: "item__info--shipping__select"}
     =f.label :shipping_days_id, "発送までの日数", class: "item__info--shipping_days"
-    =f.collection_select :shipping_days_id, ShippingDays.all, :id, :days
+    =f.collection_select :shipping_days_id, ShippingDays.all, :id, :days,{}, {class: "item__info--shipping__select"}
     =f.label :price, '販売価格（必須）', class: "item__info--price"
     =f.number_field :price, class:"item__info--price--input"
     =f.submit "出品する", class:"item__shipping__btn--ship"

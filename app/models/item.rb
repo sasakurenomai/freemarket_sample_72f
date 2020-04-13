@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :item_status
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :shipping_days
+  belongs_to_active_hash :charge
 
 
   validates :name, presence: true
