@@ -6,9 +6,20 @@ class ItemsController < ApplicationController
     @users = User.page(params[:page]).per(5)
   end
 
-  def new
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
-  
+
+  def new
+    @item = Item.new
+    @item.item_images.new
+  end
+
   def show
   end
   
@@ -23,7 +34,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
+  def item_params
+    params.require(:item).permit(:name, :details, :price, item_images_attributes: [:image_url, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
   def set_item
     @item = Item.find(params[:id])
   end

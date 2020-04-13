@@ -4,24 +4,11 @@
       %img(src="/logo/logo.png" alt="logo" class="item__header--logo__size")/
   .item__contents
     .item__content
-      .item__info
-        =form_with model: @item, local:true do |f|
-          =f.label :image, '出品画像', class: "item__info--shipping_image"
-          .item__info--image 
-            =f.label :image, class:"item__info--shipping_image--label" do
-              %i.fa.fa-image.item__info--shipping_image--icon
-              =f.file_field :image, class: "item__info--shipping_image--input"
-          =f.label :name, '商品名', class: "item__info--name"
-          =f.text_field :name, class: "item__info--name--input"
-          =f.label :details, '商品の説明', class: "item__info--detail"
-          =f.text_area :detail, class:"item__info--detail--input"
+      =render partial: 'form'
       .item__shipping-show
         %p
           商品の詳細
 
         -# これからデータベースと他の機能がしっかり作成されてから以下の部分は作る（カテゴリーなど）
-      .item__shipping__btn
-        %a.item__shipping__btn--ship(href="#")
-          出品する
         %a.item__shipping__btn--draft(href="#")
           下書きに保存

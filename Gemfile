@@ -78,9 +78,18 @@ gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
 
+gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
+
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'kaminari'
 gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'mini_magick'
+
+
+gem 'pry-rails'
+gem 'active_hash'
