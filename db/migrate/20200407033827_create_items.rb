@@ -10,7 +10,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.bigint  :category_id
       t.integer :charge_id
       t.integer :shipping_area_id,   null: false
-      t.string  :shipping_days_id,   null: false
+      t.integer :shipping_days_id,   null: false
       t.integer :item_status_id,     null: false
 
       t.timestamps
