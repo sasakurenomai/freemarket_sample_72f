@@ -3,7 +3,7 @@
     .header__inner__main
       .header__inner__main__icon
         %h1
-          = link_to '#' do
+          = link_to root_path do
             = image_tag '/logo/logo.png'
       .header__inner__main__searchBox
         %form
@@ -20,7 +20,7 @@
       %ul{ class: 'header__inner__nav__listRight' }
         - if user_signed_in?
           %li{ class: 'header__inner__nav__listRight__item' }
-            = link_to '#' do
+            = link_to user_path(current_user) do
               マイページ
           %li{ class: 'header__inner__nav__listRight__item header__inner__nav__listRight__item--last' }
             = link_to destroy_user_session_path, method: 'delete' do
