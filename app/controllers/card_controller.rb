@@ -19,11 +19,11 @@ class CardController < ApplicationController
       email: current_user.email
       )
       
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @card.save
+      @card_new = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card_new.save
         redirect_to action: "index"
       else
-        redirect_to action: "create"
+        redirect_to action: "new"
       end
     end
   end
@@ -53,14 +53,7 @@ class CardController < ApplicationController
     end
   end
 
-  #def purchase
-    #Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
-    #Payjp::Charge.create(
-      #amount: , # 購入金額
-      #card: params['payjp-token'],
-      #currency: 'jpy'
-    #)
-  #end
+  
 
   def destroy 
     Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"

@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded", (e) => {
     Payjp.setPublicKey("pk_test_6f80d6030a8568ea3f785a13");
-    const btn = document.getElementById('token_submit'); //IDがtoken_submitの場合に取得されます
+    const btn = document.getElementById('token_submit'); 
     btn.addEventListener("click", (e) => {
       e.preventDefault();
 
@@ -21,7 +21,7 @@ document.addEventListener(
           $("#exp_month").removeAttr("name");
           $("#exp_year").removeAttr("name");
           $("#card_token").append(
-            $('<input type="hidden" name="payjp-token">').val(response.id)
+          $('<input type="hidden" name="payjp-token">').val(response.id)
           ); 
           document.inputForm.submit();
           alert("登録が完了しました");

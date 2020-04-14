@@ -67,7 +67,7 @@
   }
 
   &__list__remove{
-    background-color: red;
+    background-color: blue;
     color: white;
     border: none;
     height: 50px;
@@ -75,9 +75,20 @@
     margin-left: 180px;
     margin-top: 50px;
   }
-
-
-
+  .content__credit-cards__register-box{
+    background-color: red;
+    text-align: center;
+    line-height: 3.0;
+    border: none;
+    height: 50px;
+    width: 150px;
+    margin-left: 175px;
+    margin-top: 50px;
+    .content__credit-cards__list-rejister{
+      color: white;
+      
+    }
+  }
 }
 
 

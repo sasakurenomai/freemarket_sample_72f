@@ -19,6 +19,9 @@
         = exp_month + " / " + exp_year
       %input{type: "hidden", name: "card_id", value: ""}
       = f.submit "削除", {class: "content__credit-cards__list__remove"}
+  - else
+    .content__credit-cards__register-box
+      = link_to "カード登録", card_new_path, class: "content__credit-cards__list-rejister"
 
 .content-container__footer
   .content-container__footer__nav
