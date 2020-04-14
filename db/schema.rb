@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 2020_04_14_070932) do
     t.bigint "user_id", null: false
     t.bigint "cetegory_id"
     t.string "brand"
+    t.bigint "category_id"
     t.integer "charge_id"
     t.integer "shipping_area_id", null: false
     t.string "shipping_days_id", null: false
-    t.integer "sales_status", null: false
-    t.integer "item_status", null: false
+    t.integer "item_status_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
