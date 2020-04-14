@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :show, :edit, :destroy]
   resources :users, only: [:show]
 
-
+  #get 'アクション', to: 'コントローラー#アクション'
+  #get 'コントローラー/アクション'
   get 'card/new'
   get 'card/index'
 

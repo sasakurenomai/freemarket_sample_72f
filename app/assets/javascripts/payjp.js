@@ -5,14 +5,12 @@ document.addEventListener(
     btn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      
       const card = {
         number: document.getElementById("card_number").value,
         cvc: document.getElementById("cvc").value,
         exp_month: document.getElementById("exp_month").value,
         exp_year: document.getElementById("exp_year").value
       }; 
-
       
       Payjp.createToken(card, (status, response) => {
         if (status === 200) {

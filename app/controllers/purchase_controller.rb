@@ -24,6 +24,10 @@ require 'payjp'
   redirect_to action: 'done'
   end
 
+  def done
+    
+  end
+
 
 
 end
