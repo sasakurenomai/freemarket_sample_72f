@@ -81,6 +81,7 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 gem 'jquery-rails'
 
 gem 'devise-i18n'
