@@ -16,22 +16,9 @@ class Item < ApplicationRecord
   validates :details,     presence: true
   validates :price,       presence: true
   validates :item_images, presence: true
+  validates :user_id,     presence: true
+  validates :item_status_id, presence: true
+  validates :shipping_area_id, presence:true
+  validates :shipping_days_id, presence: true
 
-
-    # "validates :カラム名, presence: true" を適用するカラム
-    # columns = %w[
-    #     :name
-    #     :details
-    #     :user_id
-    #     :sales_status
-    #     :item_status
-    #     :price
-    #     :shipping_area
-    #     :shipping_cost
-    #     :shipping_days
-    # ]
-
-    # columns.each do |column|
-    #     validates column, presence: true
-    # end
 end
