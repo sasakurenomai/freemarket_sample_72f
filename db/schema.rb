@@ -29,36 +29,37 @@ ActiveRecord::Schema.define(version: 2020_04_13_134047) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "ancestry"
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image_url", null: false
-    t.bigint "item_id", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_item_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "details", null: false
+    t.integer "user_id", null: false
+    t.integer "buyer_id"
+    t.integer "sales_status", null: false
+    t.integer "item_status", null: false
+    t.string "brand"
     t.integer "price", null: false
+    t.string "shipping_how_to"
+    t.integer "shipping_area", null: false
+    t.integer "shipping_cost", null: false
+    t.string "shipping_days", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "buyer_id"
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.string "brand"
     t.integer "charge_id", null: false
-    t.integer "shipping_area_id"
-    t.integer "shipping_days_id", null: false
-    t.integer "item_status_id", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"

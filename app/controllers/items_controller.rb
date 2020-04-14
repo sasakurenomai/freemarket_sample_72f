@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: :new
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
-  
+
   def index
     @items = Item.all.includes(:item_images)
     @parents = Category.where(ancestry: nil).order('id ASC')
@@ -24,6 +25,16 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  
+  def show
+    @item = Item.find(params[:id])
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+  end
+  
+  def edit
+  end
   
   def edit
   end
@@ -37,8 +48,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      render :destroy
+    else
+      redirect_to :back, alert: '商品の出品取り下げ時にエラーが発生しました。'
+    end
   end
 
   def get_category_children
