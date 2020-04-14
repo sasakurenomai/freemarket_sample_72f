@@ -15,8 +15,9 @@ class Item < ApplicationRecord
     # columns.each do |column|
     #     validates column, presence: true
     # end
-
+    
     # belongs_to :category
+  has_many :comments
   has_many :item_images, dependent: :destroy
   belongs_to :user
   accepts_nested_attributes_for :item_images, allow_destroy: true

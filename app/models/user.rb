@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_one :address
   has_many :items, dependent: :destroy
+  has_many :comments
 end
