@@ -14,3 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+$(function(){
+  setTimeout("$('.notifications').fadeOut('slow')", 1000) 
+})
