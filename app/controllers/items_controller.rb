@@ -28,9 +28,16 @@ class ItemsController < ApplicationController
 
   
   def show
-    @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+    @category_grandchildren = Category.find(@item.category_id)
+    @category_children = @category_grandchildren.parent
+    @category_parent = @category_children.parent
+
+    @item_status = ItemStatus.find(@item.item_status_id)
+    @charge = Charge.find(@item.charge_id)
+    @shipping_area = ShippingArea.find(@item.shipping_area_id)
+    @shipping_days = ShippingDays.find(@item.shipping_days_id)
   end
   
   def edit
