@@ -1,7 +1,8 @@
 .item__create
   .item__header
-    .item__header--logo
-      %img(src="/logo/logo.png" alt="logo" class="item__header--logo__size")/
+    .item__header--logo 
+      =link_to items_path do
+        %img(src="/logo/logo.png" alt="logo" class="item__header--logo__size")/
   .item__contents
     =render partial: 'form'
 
