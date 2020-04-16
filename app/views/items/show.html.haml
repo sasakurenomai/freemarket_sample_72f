@@ -61,9 +61,11 @@
           = @item.details
       - if user_signed_in? && current_user.id == @item.user.id
         .item-details-wrapper__container__inner__body__edit
-          = link_to edit_item_path(@item), class: 'far fa-edit' do
+          = link_to edit_item_path(@item) do
+            = icon 'far', 'edit'
             編集する
-          = link_to item_path(@item), method: 'delete', class: 'far fa-trash-alt', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
+          = link_to item_path(@item), method: 'delete', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
+            = icon 'far', 'fa-trash-alt'
             出品を取り下げる
   .item-details-wrapper__container.item-details-wrapper__container--border
     .item-details-wrapper__container__inner
