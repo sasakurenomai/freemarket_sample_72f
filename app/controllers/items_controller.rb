@@ -1,10 +1,17 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
   before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def index
     @items = Item.all.includes(:item_images)
     @users = User.page(params[:page]).per(5)
+    @parents = Category.where(ancestry: nil).order('id ASC')
+  end
+
+  def new
+    @item = Item.new
+    @item.item_images.new
   end
 
   def create
@@ -16,11 +23,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def new
-    @item = Item.new
-    @item.item_images.new
-  end
-
+  
   def show
     @item = Item.find(params[:id])
     @comment = Comment.new
@@ -28,14 +31,6 @@ class ItemsController < ApplicationController
   end
   
   def edit
-  end
-  
-  def destroy
-    if @item.destroy
-      render :destroy
-    else
-      redirect_to :back, alert: '商品の出品取り下げ時にエラーが発生しました。'
-    end
   end
 
   def update
@@ -46,9 +41,25 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @item.destroy
+      render :destroy
+    else
+      redirect_to :back, alert: '商品の出品取り下げ時にエラーが発生しました。'
+    end
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :details, :price, item_images_attributes: [:image_url, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :details, :price, :item_status_id, :shipping_area_id, :shipping_days_id, :category_id,:charge_id, :brand, item_images_attributes: [:image_url, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_item

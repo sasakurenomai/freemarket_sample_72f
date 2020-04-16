@@ -6,7 +6,7 @@
     .all-item__main__left
     .all-item__main__right
       .all-item__main__right__box
-        %h2 〜〜〜 の商品一覧
+        %h2= "#{@category.name} の商品一覧"
       .all-item__main__right__lists
         - @items.each do |item|
           .all-item__main__right__lists__list

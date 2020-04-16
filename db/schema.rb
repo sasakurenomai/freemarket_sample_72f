@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_112056) do
+ActiveRecord::Schema.define(version: 2020_04_14_070932) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -29,9 +29,17 @@ ActiveRecord::Schema.define(version: 2020_04_10_112056) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "item_id"
+    t.integer "user_id", null: false
+    t.integer "item_id", null: false
     t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_112056) do
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image_url", null: false
-    t.bigint "item_id", null: false
+    t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_images_on_item_id"
@@ -49,12 +57,16 @@ ActiveRecord::Schema.define(version: 2020_04_10_112056) do
     t.string "name", null: false
     t.string "details", null: false
     t.integer "price", null: false
+    t.bigint "buyer_id"
+    t.bigint "user_id", null: false
+    t.string "brand"
+    t.bigint "category_id"
+    t.integer "charge_id"
+    t.integer "shipping_area_id", null: false
+    t.integer "shipping_days_id", null: false
+    t.integer "item_status_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "buyer_id"
-    t.bigint "user_id"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +89,4 @@ ActiveRecord::Schema.define(version: 2020_04_10_112056) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "users"
-  add_foreign_key "items", "users", column: "buyer_id"
 end
