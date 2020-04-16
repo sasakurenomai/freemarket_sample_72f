@@ -15,43 +15,35 @@
                 %td #{@item.user.nickname}
               %tr
                 %th カテゴリ
-                %td カテゴリーを表示
+                %td 
+                  =@category_parent.name 
+                  %br/
+                  =@category_children.name 
+                  %br/
+                  =@category_grandchildren.name 
               %tr
                 %th ブランド
                 %td #{@item.brand}
               %tr
                 %th 商品の状態
                 %td<
-                  - case @item.item_status
-                    - when 0 then
-                      新品、未使用
-                    - when 1 then
-                      未使用に近い
-                    - when 2 then
-                      目立った傷や汚れなし
-                    - when 3 then
-                      やや傷や汚れあり
-                    - when 4 then
-                      やや傷や汚れあり
-                    - when 5 then
-                      傷や汚れあり
+                  
+
               %tr
                 %th 送料の負担
                 %td<
-                  - case @item.shipping_cost
-                    - when 0 then
-                      発送元払い
-                    - when 1 then
-                      着払い
+                  =@charge.charge
               %tr
-                %th 配送の方法
-                %td #{@item.shipping_how_to}
+                -# %th 配送の方法
+                -# %td #{@item.shipping_how_to}
               %tr
                 %th 発送元地域
-                %td #{@item.shipping_area}
+                %td
+                  = @shipping_area.name
               %tr
                 %th 発送日の目安
-                %td #{@item.shipping_days}
+                %td 
+                  =@shipping_days.days
       .item-details-wrapper__container__inner__body__price
         %p<
           ¥ #{@item.price}
@@ -65,7 +57,8 @@
           = link_to '#' do
             %button 購入画面に進む
       .item-details-wrapper__container__inner__body__text
-        %p ここには商品の説明文が表示されます。
+        %p 
+          = @item.details
       - if user_signed_in? && current_user.id == @item.user.id
         .item-details-wrapper__container__inner__body__edit
           = link_to edit_item_path(@item), class: 'far fa-edit' do

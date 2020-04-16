@@ -1,13 +1,8 @@
 .item__create
   .item__header
-    .item__header--logo
-      %img(src="/logo/logo.png" alt="logo" class="item__header--logo__size")/
+    .item__header--logo 
+      =link_to items_path do
+        %img(src="/logo/logo.png" alt="logo" class="item__header--logo__size")/
   .item__contents
-    .item__content
-      =render partial: 'form'
-      .item__shipping-show
-        %p
-          商品の詳細
-        -# これからデータベースと他の機能がしっかり作成されてから以下の部分は作る（カテゴリーなど）
-        %a.item__shipping__btn--draft(href="#")
-          下書きに保存
+    =render partial: 'form'
+
