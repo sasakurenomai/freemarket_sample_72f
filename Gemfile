@@ -88,6 +88,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem 'font-awesome-sass'
+
+gem 'jquery-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem 'ancestry'

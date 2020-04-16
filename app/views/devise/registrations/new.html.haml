@@ -1,7 +1,8 @@
 .wrapper
   .header
-    .image 
-      = image_tag "/logo/logo.png", width:'185px', height:'49px'
+    .image
+      = link_to root_path do
+        = image_tag "/logo/logo.png", width:'185px', height:'49px'
     .progress-bar
   .register-main
     .register-container

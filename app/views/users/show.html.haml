@@ -2,7 +2,7 @@
 .user__show
   .l-container
     .left--content
-      %a.link_order(href="#")
+      %a.link_order(href="#{user_path}")
         マイページ
         %i.fa.fa-angle-right
       %a.link_order(href="#")
@@ -76,7 +76,7 @@
         %a.mypage-user-icon--link(href="#")
           %i.fa.fa-user-circle
           %h2
-            name
+            = @user.nickname
           .mypage-user__info
             .mypage-user__info--value
               評価

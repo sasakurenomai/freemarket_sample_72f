@@ -1,7 +1,8 @@
 .wrapper
   .header
-    .image 
-      = image_tag "/logo/logo.png", width:'185px', height:'49px'
+    .image
+      = link_to root_path do
+        = image_tag "/logo/logo.png", width:'185px', height:'49px'
     .progress-bar
   .register-main
     .register-container
@@ -56,14 +57,14 @@
 
             .form-group
               = f.label :"建物名(部屋番号含む)"
-              %span.form-require 任意
+              %span.form-optional 任意
               %br/
               .input-field
                 = f.text_field :room, placeholder: "例) なんばskyo 15F"
             
             .form-group
               = f.label :電話番号
-              %span.form-require 任意
+              %span.form-optional 任意
               %br/
               .input-field
                 = f.telephone_field :phone_number, placeholder: "例) ハイフンはなしで記入"
