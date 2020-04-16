@@ -19,7 +19,18 @@
         display: flex;
         &__photo {
           width: calc(100% / 2 - 15px);
-          background-color: blanchedalmond;
+          .main {
+            img {
+              width: 100%;
+            }
+          }
+          .thumb {
+            width: 100%;
+            display: flex;
+            img {
+              width: calc(310px / 5);
+            }
+          }
         }
         &__property {
           width: calc(100% / 2 - 15px);
