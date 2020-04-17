@@ -14,7 +14,7 @@
       %a.link_order(href="#")
         いいね！一覧
         %i.fa.fa-angle-right
-      %a.link_order(href="#")
+      %a.link_order(href="#{new_item_path}")
         出品する
         %i.fa.fa-angle-right
       %a.link_order(href="#")
@@ -73,10 +73,14 @@
         %i.fa.fa-angle-right
     .right--content
       .mypage-user-icon
-        %a.mypage-user-icon--link(href="#")
-          %i.fa.fa-user-circle
-          %h2
-            = @user.nickname
+        .mypage-user-iconimage
+          = link_to edit_user_registration_path do
+            - if @user.avatar.nil?
+              = image_tag @user.avatar
+            - else
+              = image_tag "/icon/member_photo_noimage_thumb.png"
+        .mypage-user-icon--link
+          = @user.nickname 
           .mypage-user__info
             .mypage-user__info--value
               評価
