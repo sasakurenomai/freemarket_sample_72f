@@ -75,7 +75,7 @@
       .mypage-user-icon
         .mypage-user-iconimage
           = link_to edit_user_registration_path do
-            - if @user.avatar.nil?
+            - if @user.avatar.present?
               = image_tag @user.avatar
             - else
               = image_tag "/icon/member_photo_noimage_thumb.png"
