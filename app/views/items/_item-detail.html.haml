@@ -45,15 +45,11 @@
             %tr
               %th 商品の状態
               %td<
-                
-
+                = @item_status.status
             %tr
               %th 送料の負担
               %td<
-                =@charge.charge
-            %tr
-              -# %th 配送の方法
-              -# %td #{@item.shipping_how_to}
+                = @charge.charge
             %tr
               %th 発送元地域
               %td
