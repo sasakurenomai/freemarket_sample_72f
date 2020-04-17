@@ -36,6 +36,9 @@ class ItemsController < ApplicationController
     @charge = Charge.find(@item.charge_id)
     @shipping_area = ShippingArea.find(@item.shipping_area_id)
     @shipping_days = ShippingDays.find(@item.shipping_days_id)
+
+    # 商品画像
+    @itemPics = @item.item_images.where(item_id: @item.id)
   end
 
   def update
