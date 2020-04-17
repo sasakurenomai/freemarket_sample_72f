@@ -1,3 +1,42 @@
-%h2 購入が完了しました
-%p Apple MacBook Pro 13インチ
-%p ¥5,000(送料込み)
+.content-container
+  .content-container__header
+    %h1
+      =  link_to root_path do
+        =  image_tag "/logo/logo-white.png"
+  .content-container__main
+    .content-container__main__body
+      %h2{class: "body-chapter"}  購入完了画面
+.content__credit-cards-purchase
+  %h2 購入が完了しました
+  .content__credit-cards-purchase__item-information
+    = image_tag @image.image_url, height: "300", width: "200"
+    -if @buyer.present?
+      .buyer
+        %span{class: "sold"} sold
+
+  %p 
+    = @item.name
+  %br
+  %h2 支払金額
+  %p 
+    ¥
+    = @item.price 
+    （ 送料税込み )
+  %br
+  = link_to "トップ画面に戻る", root_path, class: "root-back"
+
+.content-container__footer-credit
+  .content-container__footer-credit__nav
+    %ul{class: "footer-list"}
+      %li{class: "footer-privacy"} プライバシーポリシー
+      %li{class: "footer-terms"} FURIMA利用規約
+      %li{class: "footer-transacation"} 特定商取引に関する表記
+    = link_to "#" do
+      = image_tag "https://i.gyazo.com/af9930889141532d7485401ea406d64b.png"
+    %br
+    %span{class:"footer-logo"}
+      FURIMA
+    %br
+    %i ©︎
+    %small
+      FURIMA, Inc.

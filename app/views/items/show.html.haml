@@ -6,7 +6,7 @@
         %h1 #{@item.name}
       .item-details-wrapper__container__inner__body
         .item-details-wrapper__container__inner__body__photo
-          = image_tag "#{@item.item_images.find_by(item_id: @item.id).image_url}"
+          = image_tag @image.image_url, height: "300", width: "220"
         .item-details-wrapper__container__inner__body__property
           %table{:border => 1}
             %tbody
@@ -62,7 +62,7 @@
           %button{:disabled => 'disabled'} 購入画面に進む
       - else
         .item-details-wrapper__container__inner__body__purcharseBtn
-          = link_to '#' do
+          = link_to item_purchase_index_path(@item.id) do
             %button 購入画面に進む
       .item-details-wrapper__container__inner__body__text
         %p ここには商品の説明文が表示されます。

@@ -2,12 +2,16 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :destroy]
 
   def index
+    @item = Item.find(1)
+    @image = @item.item_image
   end
 
   def new
   end
   
   def show
+    @item = Item.find(params[:id])
+    @image = @item.item_image
   end
   
   def edit
@@ -23,6 +27,6 @@ class ItemsController < ApplicationController
 
   private
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(1)
   end
 end

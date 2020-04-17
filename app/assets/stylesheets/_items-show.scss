@@ -17,8 +17,12 @@
       &__body {
         width: 100%;
         display: flex;
+        position: relative;
         &__photo {
-          width: calc(100% / 2 - 15px);
+          transform: rotate(-90deg);
+          position: absolute;
+          left: 50px;
+          top: -50px;
           background-color: blanchedalmond;
         }
         &__property {

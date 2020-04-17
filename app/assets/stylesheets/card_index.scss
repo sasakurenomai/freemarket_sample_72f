@@ -48,7 +48,7 @@
   #charge-form{
 
     img{
-      margin-left: 130px;
+      margin-left: 120px;
       text-align: center;
       margin-top: 70px;
       margin-bottom: 50px;
@@ -74,6 +74,7 @@
     width: 150px;
     margin-left: 180px;
     margin-top: 50px;
+    cursor: pointer;
   }
   .content__credit-cards__register-box{
     background-color: red;
@@ -84,9 +85,11 @@
     width: 150px;
     margin-left: 175px;
     margin-top: 50px;
+    
+    
     .content__credit-cards__list-rejister{
+      display: block;
       color: white;
-      
     }
   }
 }

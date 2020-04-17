@@ -21,8 +21,8 @@
       = f.submit "削除", {class: "content__credit-cards__list__remove"}
   - else
     .content__credit-cards__register-box
-      = link_to "カード登録", card_new_path, class: "content__credit-cards__list-rejister"
-
+      = link_to card_new_path, class: "content__credit-cards__list-rejister", "data-turbolinks": false do
+        カード登録
 .content-container__footer
   .content-container__footer__nav
     %ul{class: "footer-list"}

@@ -1,7 +1,7 @@
 class CardController < ApplicationController
 
   require "payjp"
-  before_action :set_card
+  before_action :set_card #, except: [:create]
 
   def new 
     card = Card.where(user_id: current_user.id).first
@@ -10,7 +10,7 @@ class CardController < ApplicationController
 
   def create 
     Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
-
+    #binding.pry
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
@@ -60,9 +60,9 @@ class CardController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy 
-      redirect_to action: "index", notice: "削除しました"
+      redirect_to action: "index"
     else 
-      redirect_to action: "index", alert: "削除できませんでした"
+      redirect_to action: "index"
     end
   end
 

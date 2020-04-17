@@ -3,7 +3,7 @@ document.addEventListener(
     Payjp.setPublicKey("pk_test_6f80d6030a8568ea3f785a13");
     const btn = document.getElementById('token_submit'); 
     btn.addEventListener("click", (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
       const card = {
         number: document.getElementById("card_number").value,

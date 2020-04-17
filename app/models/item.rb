@@ -17,6 +17,6 @@ class Item < ApplicationRecord
     end
 
     belongs_to :user
-    has_many :item_images, dependent: :destroy
+    has_one :item_image, dependent: :destroy
     # belongs_to :category
 end
