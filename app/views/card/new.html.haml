@@ -5,37 +5,36 @@
         =  image_tag "/logo/logo-white.png"
   .kurejitto-container__main
     .kurejitto-container__main__body
-      %h2{class: "body-chapter"}  支払い方法
+      %h2.body-chapter  支払い方法
     .kurejitto-container__main__form
       = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .kurejitto-container__main__form__top
-          %label{class: "top-label"} カード番号
-          %span{class: "top-span"} 必須
+          %label.top-label カード番号
+          %span.top-span 必須
           %br
-          %input{class: "number", placeholder: "半角数字のみ" , maxlength: "16", type: "number", id: "card_number"}
+          %input#card_number{placeholder: "半角数字のみ" , maxlength: "16", type: "number"}
           %br
-          
           %ul
-            %li{class: "error-text1"} 必須項目です  半角数字で入力してください
-          %ul{class: "card-list"}
+            %li.error-text1 必須項目です  半角数字で入力してください
+          %ul.card-list
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/visa.svg?3237555052", height:"20", width: "50"}
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/card/visa.svg?3237555052", size: "50x20"
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/master-card.svg?3237555052", height:"20", width: "35"}
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/card/master-card.svg?3237555052", size: "35x20"
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/jcb.svg?3237555052", height:"20", width: "30"}
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/card/jcb.svg?3237555052", size: "30x20"
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/saison-card.svg?3237555052", height:"20", width: "30"}
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/card/saison-card.svg?3237555052", size: "30x20"
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/american_express.svg?3237555052", height:"20", width: "20"}
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/card/american_express.svg?3237555052", size: "20x20"
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/dinersclub.svg?3237555052", height:"20", width: "30"}
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/card/dinersclub.svg?3237555052", size: "30x20"
             %li
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/card/discover.svg?3237555052", height:"20", width: "30"}
+              =image_tag "https://pcweb-assets.mercdn.net/assets/img/card/discover.svg?3237555052", size: "30x20"
 
         .kurejitto-container__main__form__middle
-          %label{class: "middle-label"} 有効期限
-          %span{class: "middle-span"} 必須
+          %label.middle-label 有効期限
+          %span.middle-span 必須
           %br
           %select#exp_month{name: "exp_month", type: "text"}
             %option{value: "0"}
@@ -51,7 +50,7 @@
             %option{value: "10"}10
             %option{value: "11"}11
             %option{value: "12"}12
-          %i{class: "arrow-left"}
+          %i.arrow-left
           %span 月
           %select#exp_year{name: "exp_year", type: "text"}
             %option{value: "0"}
@@ -66,36 +65,36 @@
             %option{value: "2027"}27
             %option{value: "2028"}28
             %option{value: "2029"}29
-          %i{class: "arrow-right"}
+          %i.arrow-right
           %span 年
           %br
         .kurejitto-container__main__form__bottom
           %label セキュリティコード
-          %span{class: "code-span"} 必須
+          %span.code-span 必須
           %br
-          %input{class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", type: "number", id: "cvc"}
+          %input#cvc{placeholder: "カード背面3~4桁の番号", maxlength: "4", type: "number"}
           #card_token
           %ul
-            %li{class: "error-text2"} 必須項目です  半角数字で入力してください
+            %li.error-text2 必須項目です  半角数字で入力してください
           .seqcode
-            %span{class: "seq-span"} ？
-            %label{class: "seq-label"} カード裏面の番号とは？
+            %span.seq-span ？
+            %label.seq-label カード裏面の番号とは？
             .seqcode-info
-              %span{class: "seq-info-label"} カードの裏面をご確認ください
+              %span.seq-info-label カードの裏面をご確認ください
               %br
-              %img{src: "https://pcweb-assets.mercdn.net/assets/img/signup/seq-card.png?3780252616", height:"100", width:"200"}  
+              = image_tag "https://pcweb-assets.mercdn.net/assets/img/signup/seq-card.png?3780252616",size: "200x100"  
           = submit_tag "登録する", id: "token_submit"
           
   .kurejitto-container__footer
     .kurejitto-container__footer__nav
-      %ul{class: "footer-list"}
-        %li{class: "footer-privacy"} プライバシーポリシー
-        %li{class: "footer-terms"} FURIMA利用規約
-        %li{class: "footer-transacation"} 特定商取引に関する表記
-      = link_to "#" do
+      %ul.footer-list
+        %li.footer-privacy プライバシーポリシー
+        %li.footer-terms FURIMA利用規約
+        %li.footer-transacation 特定商取引に関する表記
+      = link_to root_path do
         = image_tag "https://i.gyazo.com/af9930889141532d7485401ea406d64b.png"
       %br
-      %span{class:"footer-logo"}
+      %span.footer-logo
         FURIMA
       %br
       %i ©︎
