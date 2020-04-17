@@ -6,12 +6,8 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.includes(:item_images)
     @categories = Category.includes(items: :item_images).roots.limit(1)
-    # @categories.each do |category|
-    #   @category_items = Item.where(category: category.subtree)
-    # end
     @users = User.page(params[:page]).per(5)
     @parents = Category.where(ancestry: nil).order('id ASC')
-    # @roots_category = Category.roots
   end
 
   def new

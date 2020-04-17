@@ -11,11 +11,7 @@
             = "#{category.name}の商品一覧"
             - category.subtree.each do |grand_category|
               - grand_category.items.each do |item|
-                -# = item.name
-            -# - Item.where(cateogry: category.subtree)
-        -# - @roots_category.each do |category|
-        -#   %h2= "#{category.name}の商品一覧"
-        
+                = item.name
       .all-item__main__right__lists
         - @items.each do |item|
           .all-item__main__right__lists__list
