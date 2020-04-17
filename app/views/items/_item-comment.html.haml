@@ -1,11 +1,14 @@
 .item-details-wrapper__container.item-details-wrapper__container--border
   .item-details-wrapper__container__inner
-    .item-details-wrapper__container__inner__comments
-      .item-details-wrapper__container__inner__comments__user-pic
-        = image_tag '/a001.png'
-      .test
-        - if @comments
-          - @comments.each do |comment|
+    - if @comments
+      - @comments.each do |comment|
+        .item-details-wrapper__container__inner__comments
+          .item-details-wrapper__container__inner__comments__user-pic
+            - if comment.user.avatar.attached?
+              = image_tag comment.user.avatar
+            - else
+              = image_tag "/icon/member_photo_noimage_thumb.png"
+          .test
             %strong
             = link_to comment.user.nickname, "/users/#{comment.user_id}"
             .item-details-wrapper__container__inner__comments__comment
@@ -18,4 +21,3 @@
       - else
         %strong
           %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-          
