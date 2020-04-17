@@ -6,9 +6,6 @@
   .kurejitto-container__main
     .kurejitto-container__main__body
       %h2{class: "body-chapter"}  支払い方法
-    
-    
-
     .kurejitto-container__main__form
       = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .kurejitto-container__main__form__top

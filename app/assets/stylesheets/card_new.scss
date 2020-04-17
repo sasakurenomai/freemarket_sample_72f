@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .kurejitto-container{
   
   &__header{
@@ -14,16 +13,14 @@
       display: inline-block;
       margin: 25px 0 0;
 
-      
-
-        img{
+      img{
           height: 55px;
           width: 190px;
-        }
-      
+      }
     }
   }
 }
+
 .kurejitto-container__main{
   padding: 10px;
 
@@ -38,7 +35,6 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
-
   }
 
   &__form{
@@ -64,8 +60,7 @@
         font-size: 13px;
         background-color: red;
         color: white;
-        vertical-align: 2px;
-        
+        vertical-align: 2px;  
       }
 
       input{
@@ -96,14 +91,8 @@
             display: inline-block;
             margin-top: 5px;
             margin-right: 5px;
-          img{
-            
-          }
-
         }
       }
-
-      
     }
 
     &__middle{
@@ -114,7 +103,6 @@
       position: relative;
       .middle-label{
         font-weight: bold;
-
       }
 
       .middle-span{
@@ -130,7 +118,6 @@
       select{
         -webkit-appearance:none;
         padding-left: 5px;
-        
       }
 
       .arrow-left::after{
@@ -159,8 +146,6 @@
           left: 252px;
           pointer-events: none;
           }
-
-
       
       #exp_month{
         margin-top: 5px;
@@ -216,8 +201,7 @@
         -webkit-appearance: none; 
         margin: 0; 
       } 
-
-
+    
       .error-text2{
         color: red;
         padding: 10px 30px 10px 0px;
@@ -236,8 +220,7 @@
       }
 
       .seqcode{
-        position: relative;
-        
+        position: relative;   
       }
 
       .seq-label{
@@ -282,15 +265,10 @@
         }
       } 
 
-
       .seqcode > .seq-label:hover + .seqcode-info {
         visibility: visible;
         opacity: 1.0;
-        
-      } 
-
-      
-
+      }
     }
   }
 }
@@ -318,6 +296,7 @@
     width: 50px;
     padding-top: 10px;
   }
+
   img{
     margin-top: 30px;
     height: 50px;
@@ -328,11 +307,12 @@
   .footer-logo{
     font-weight: bold;
     color: #BBBBBB;
-
   }
+
   i{
     font-size: 18px;
   }
+  
   small{
     vertical-align: 3px;
     font-size: 10px;

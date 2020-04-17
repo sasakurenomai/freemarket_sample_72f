@@ -8,14 +8,11 @@
     h1{
       display: inline-block;
       margin: 25px 0 0;
-      
-      
 
-        img{
+      img{
           height: 55px;
           width: 190px;
-        }
-      
+      }
     }
   }
 }
@@ -34,7 +31,6 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
-
   }
 }
 
@@ -43,20 +39,21 @@
   width: 700px;
   background-color:white;
   margin: 10px auto;
-  h2{
-    
+
+  h2{  
     text-align: center;
     line-height: 2.5;
     height: 50px;
     font-size: 20px;
     font-weight: bold;
   }
-  p{
-    
+
+  p{  
     font-size: 20px;
     text-align: center;
     margin-top: 20px;
   }
+
   &__item-information{
     height: 200px;
     width: 300px;
@@ -64,14 +61,15 @@
     margin: 0 auto;
     margin-top: 20px;
     position: relative;
+
     img{
       transform: rotate(-90deg);
       position: absolute;
       left: 50px;
       top: -50px;
     }
-  
   }
+
   &__payment-information{
     height: 320px;
     width: 700px;
@@ -84,8 +82,8 @@
       padding-top: 10px;
       font-size: 20px;
       font-weight: bold;
-
     }
+
     .purchase__info--item__card{
       display:block;
       background-color: blue;
@@ -96,6 +94,7 @@
       margin: 0 auto;
       margin-top: 10px;
     }
+
     button{
       height: 80px;
       width: 500px;
@@ -109,18 +108,6 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .content-container__footer-credit{
   height: 250px;
@@ -144,25 +131,25 @@
     display: inline-block;
     height: 60px;
     width: 50px;
-    padding-top: 10px;
-    
+    padding-top: 10px;    
   }
+
   img{
     margin-top: 30px;
     height: 50px;
     width: 50px;
-    vertical-align: -7px;
-    
+    vertical-align: -7px;  
   }
   
   .footer-logo{
     font-weight: bold;
     color: #BBBBBB;
-
   }
+
   i{
     font-size: 18px;
   }
+  
   small{
     vertical-align: 3px;
     font-size: 10px;

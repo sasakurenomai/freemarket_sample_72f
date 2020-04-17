@@ -12,15 +12,14 @@
 
 .buyer{
   height: 50px;
-  width: 50px;
-  
+  width: 50px;  
   float: left;
   position: absolute;
-
   border-bottom: 50px solid transparent;
   border-left: 50px solid red;
   border-top: 50px solid red;
   border-right: 50px solid transparent;
+
   .sold{
     position: absolute;
     top: -35px;
@@ -28,7 +27,5 @@
     transform: rotate(-45deg);
     color: white;
     font-size: 30px;
-    
-
   }
 }

@@ -9,16 +9,14 @@
       display: inline-block;
       margin: 25px 0 0;
 
-      
-
-        img{
-          height: 55px;
-          width: 190px;
-        }
-      
+      img{
+        height: 55px;
+        width: 190px;
+      }    
     }
   }
 }
+
 .content-container__main{
   padding: 10px;
 
@@ -33,7 +31,6 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
-
   }
 }
 
@@ -42,8 +39,6 @@
   width: 500px;
   background-color:white;
   margin: 10px auto;
-
-
 
   #charge-form{
 
@@ -55,8 +50,7 @@
     }  
   }
 
-  &__list--pay-num{
-    
+  &__list--pay-num{  
     margin-left: 155px;
     margin-top: 0px;
     height: 50px;
@@ -76,6 +70,7 @@
     margin-top: 50px;
     cursor: pointer;
   }
+
   .content__credit-cards__register-box{
     background-color: red;
     text-align: center;
@@ -86,31 +81,12 @@
     margin-left: 175px;
     margin-top: 50px;
     
-    
     .content__credit-cards__list-rejister{
       display: block;
       color: white;
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .content-container__footer{
   height: 250px;
@@ -135,6 +111,7 @@
     width: 50px;
     padding-top: 10px;
   }
+
   img{
     margin-top: 30px;
     height: 50px;
@@ -145,11 +122,12 @@
   .footer-logo{
     font-weight: bold;
     color: #BBBBBB;
-
   }
+
   i{
     font-size: 18px;
   }
+  
   small{
     vertical-align: 3px;
     font-size: 10px;
