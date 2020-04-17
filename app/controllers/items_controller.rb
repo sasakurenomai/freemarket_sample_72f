@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
+  before_action :set_item, only: [:show, :destroy]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def index
     @items = Item.all.includes(:item_images)
+    @categories = Category.includes(items: :item_images).roots.limit(1)
+    @users = User.page(params[:page]).per(5)
     @parents = Category.where(ancestry: nil).order('id ASC')
   end
 
@@ -33,9 +36,6 @@ class ItemsController < ApplicationController
     @charge = Charge.find(@item.charge_id)
     @shipping_area = ShippingArea.find(@item.shipping_area_id)
     @shipping_days = ShippingDays.find(@item.shipping_days_id)
-  end
-  
-  def edit
   end
 
   def update
