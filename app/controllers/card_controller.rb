@@ -1,10 +1,9 @@
 class CardController < ApplicationController
 
   require "payjp"
-  before_action :set_card #, except: [:create]
+  before_action :set_card, only:[:new, :index, :destroy]
 
   def new 
-  
     redirect_to action: "index" if @card.present?
   end
 
@@ -26,7 +25,6 @@ class CardController < ApplicationController
       end
     end
   end
-
 
   def index
     if @card.present?
@@ -52,8 +50,6 @@ class CardController < ApplicationController
     end
   end
 
-  
-
   def destroy 
     Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
     customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -64,7 +60,6 @@ class CardController < ApplicationController
       redirect_to action: "index"
     end
   end
-
 
   private
 
