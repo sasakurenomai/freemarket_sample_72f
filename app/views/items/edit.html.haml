@@ -1,1 +1,66 @@
-=render partial: "form"
+.item__create
+  .item__header
+    .item__header--logo 
+      =link_to items_path do
+        %img(src="/logo/logo.png" alt="logo" class="item__header--logo__size")/
+  .item__contents
+    .item__info
+      - if @item.errors.any?
+        %ul
+          - @item.errors.full_messages.each do |item|
+            %li
+              = item
+      =form_with model: @item, local:true do |f|
+        =f.label :item_image, '出品画像（一枚以上必須）', class: "item__info--shipping_image"
+        .item__info--image 
+          #image-box
+            =f.fields_for :item_images do |i|
+              .js-file_group{"data-index": "#{i.index}"}
+                =i.file_field :image_url , class: "js-file", id: "image-file"
+                %label(for="image-file")
+                  %i.fa.fa-camera
+                %span.js-remove
+                  削除
+              -if @item.persisted?
+                =i.check_box :_destroy, data: { index: i.index }, class: 'hidden-destroy'
+              -if @item.persisted?
+                .js-file_group{"data-index": "#{@item.item_images.count}"}
+                  = file_field_tag :image_url, name: "item[item_images_attributes][#{@item.item_images.count}][image_url]", class: "js-file"
+                  .js-remove
+                    削除
+        =f.label :name, '商品名（必須）', class: "item__info--name"
+        =f.text_field :name, class: "item__info--name--input"
+        =f.label :details, '商品の説明（必須）', class: "item__info--detail"
+        =f.text_area :details, class:"item__info--detail--input"
+        #item_category-box
+          .item_category
+            カテゴリー
+            %br/
+          .item_category_show
+            = @category_parent.name
+            %br/
+          .item_category_show
+            = @category_children.name
+            %br/
+          .item_category_show
+            = @category_grandchildren.name
+            %br/
+            %span
+              %span.item_shipping_edit
+          .item_category_edit
+            カテゴリー編集
+          = f.collection_select :parent_id, Category.roots, :id, :name, {prompt: @category_parent}, {class: "listing-select-wrapper__box--select item__info--shipping__select", id: "parent_category"}
+        =f.label :brand, "ブランド名", class: "item__info--brand"
+        =f.text_field :brand, class:"item__info--brand--input"
+        =f.label :item_status_id, "商品の状態", class:"item__info--sales_status"
+        =f.collection_select :item_status_id, ItemStatus.all, :id, :status,{}, {class:"item__info--shipping__select"}
+        =f.label :charge_id, "配送料の負担", class: "item__info--charge"
+        =f.collection_select :charge_id, Charge.all,  :id, :charge, {}, {class: "item__info--shipping__select"}
+        =f.label :shipping_area_id, "発送元の地域", class: "item__info--shipping_area"
+        =f.collection_select :shipping_area_id, ShippingArea.all, :id, :name, {},{class: "item__info--shipping__select"}
+        =f.label :shipping_days_id, "発送までの日数", class: "item__info--shipping_days"
+        =f.collection_select :shipping_days_id, ShippingDays.all, :id, :days,{}, {class: "item__info--shipping__select"}
+        =f.label :price, '販売価格（必須）', class: "item__info--price"
+        =f.number_field :price, class:"item__info--price--input"
+        .item__shipping__btn
+          =f.submit "編集完了", class:"item__shipping__btn--ship"

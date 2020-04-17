@@ -11,8 +11,8 @@
         =f.fields_for :item_images do |i|
           .js-file_group{"data-index": "#{i.index}"}
             =i.file_field :image_url , class: "js-file", id: "image-file"
-            %label(for="image-file")
-              %i.fa.fa-camera
+            -# %label(for="image-file")
+            -#   %i.fa.fa-camera                scssでdisplay:noneやitem.jsなどでもコメントアウトあり
             %span.js-remove
               削除
           -if @item.persisted?
@@ -45,6 +45,5 @@
     .item__shipping__btn
       =f.submit "出品する", class:"item__shipping__btn--ship"
       .item__shipping-show
-        -# これからデータベースと他の機能がしっかり作成されてから以下の部分は作る（カテゴリーなど）
         %a.item__shipping__btn--draft(href="#")
           下書きに保存

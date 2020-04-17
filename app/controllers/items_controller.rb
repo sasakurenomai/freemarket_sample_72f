@@ -36,6 +36,9 @@ class ItemsController < ApplicationController
   end
   
   def edit
+    @category_grandchildren = Category.find(@item.category_id)
+    @category_children = @category_grandchildren.parent
+    @category_parent = @category_children.parent
   end
 
   def update

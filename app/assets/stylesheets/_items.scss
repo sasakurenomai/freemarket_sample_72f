@@ -133,8 +133,14 @@
   margin-bottom: 10px;
 }
 
-#image-file{
-  display: none;
+.item_category{
+  font-size: 20px;
+  &_show{
+    margin: 10px;
+  }
+  &_edit{
+    font-size: 20px;
+  }
 }
 
 .item__info{
