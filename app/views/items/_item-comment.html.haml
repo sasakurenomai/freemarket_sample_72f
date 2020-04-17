@@ -8,10 +8,9 @@
               = image_tag comment.user.avatar
             - else
               = image_tag "/icon/member_photo_noimage_thumb.png"
-          .test
-            %strong
+          .item-details-wrapper__container__inner__comments__body
             = link_to comment.user.nickname, "/users/#{comment.user_id}"
-            .item-details-wrapper__container__inner__comments__comment
+            .item-details-wrapper__container__inner__comments__body__comment
               = comment.text
     .item-details-wrapper__container__inner__comments-form
       - if current_user
