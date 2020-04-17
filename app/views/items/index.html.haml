@@ -1,16 +1,25 @@
 -# ヘッダー
 = render partial: 'header'
-
+- console
 .all-item
   .all-item__main
     .all-item__main__left
     .all-item__main__right
       .all-item__main__right__box
-        %h2 〜〜〜 の商品一覧
+        - @categories.each do |category|
+          %h2
+            = "#{category.name}の商品一覧"
+            - category.subtree.each do |grand_category|
+              - grand_category.items.each do |item|
+                -# = item.name
+            -# - Item.where(cateogry: category.subtree)
+        -# - @roots_category.each do |category|
+        -#   %h2= "#{category.name}の商品一覧"
+        
       .all-item__main__right__lists
         - @items.each do |item|
           .all-item__main__right__lists__list
-            = link_to "#", class: "link" do
+            = link_to item_path(item), class: "link" do
               .all-item__main__right__lists__list__img
                 - item.item_images.each do |image|
                   = image_tag image.image_url.to_s
@@ -22,6 +31,9 @@
                     %li
                       %i ★ 0
                   %p (税込)
+                -if item.buyer_id.present?
+                  .all-item__main__right__lists__list__body__detail__sold
+                    .all-item__main__right__lists__list__body__detail__sold__sall SOLD
     %after
 = paginate @users
 
