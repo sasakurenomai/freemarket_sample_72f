@@ -4,13 +4,12 @@ class CardController < ApplicationController
   before_action :set_card #, except: [:create]
 
   def new 
-    card = Card.where(user_id: current_user.id).first
-    redirect_to action: "index" if card.present?
+  
+    redirect_to action: "index" if @card.present?
   end
 
   def create 
     Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
-    #binding.pry
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
@@ -19,7 +18,7 @@ class CardController < ApplicationController
       email: current_user.email
       )
       
-      @card_create = Card.create(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      @card_create = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card_create.save
         redirect_to action: "index"
       else
