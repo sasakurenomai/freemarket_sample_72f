@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -78,6 +79,7 @@ end
 gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'payjp'
 
 gem 'carrierwave'
 gem 'mini_magick'
@@ -93,3 +95,4 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem 'ancestry'
+

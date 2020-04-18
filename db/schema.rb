@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_082854) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,7 +109,11 @@ ActiveRecord::Schema.define(version: 2020_04_16_082854) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "users"
-  add_foreign_key "item_images", "items"
+  ##add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  ##add_foreign_key "addresses", "users"
+  #add_foreign_key "cards", "users"
+  #add_foreign_key "item_images", "items"
+  #add_foreign_key "items", "users"
+  ##add_foreign_key "item_images", "items"
+
 end
