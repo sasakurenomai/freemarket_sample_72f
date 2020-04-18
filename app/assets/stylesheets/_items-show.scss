@@ -19,11 +19,19 @@
         display: flex;
         position: relative;
         &__photo {
-          transform: rotate(-90deg);
-          position: absolute;
-          left: 50px;
-          top: -50px;
-          background-color: blanchedalmond;
+          width: calc(100% / 2 - 15px);
+          .main {
+            img {
+              width: 100%;
+            }
+          }
+          .thumb {
+            width: 100%;
+            display: flex;
+            img {
+              width: calc(310px / 5);
+            }
+          }
         }
         &__property {
           width: calc(100% / 2 - 15px);
@@ -89,6 +97,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 10px;
         &__user-pic{
           width: 80px;
           height: 80px;
@@ -98,11 +107,14 @@
             height: 100%;
           }
         }
-        &__comment{
+        &__body {
           width: 550px;
-          background-color: rgb(230, 230, 230);
-          padding: 5px;
-          border-radius: 4px;
+          &__comment{
+            width: 100%;
+            background-color: rgb(230, 230, 230);
+            padding: 5px;
+            border-radius: 4px;
+          }
         }
       }
       &__comments-form {
@@ -118,6 +130,7 @@
             background-color: rgb(59,203,205);
           }
         }
+        p { text-align: center; }
       }
     }
     &--other {

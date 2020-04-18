@@ -1,0 +1,83 @@
+.item-details-wrapper__container
+  .item-details-wrapper__container__inner
+    .item-details-wrapper__container__inner__title
+      %h1 #{@item.name}
+    .item-details-wrapper__container__inner__body
+      .item-details-wrapper__container__inner__body__photo
+        %ul.main
+          - @itemPics.each_with_index do |itemPic, i|
+            - if i == 0
+              %li{class: "pic#{i}"}
+                %img{src: "#{itemPic.image_url}"}
+            - else
+              %li{class: "pic#{i}", style: "display: none;"}
+                %img{src: "#{itemPic.image_url}"}
+        %ul.thumb
+          - @itemPics.each_with_index do |itemPic, i|
+            %li{class: "thumb#{i}"}
+              %img{src: "#{itemPic.image_url}"}
+        :javascript
+          $(function(){
+                $('.thumb li').click(function(){
+                    var class_name = $(this).attr("class"); //クリックしたサムネイルのclass名を取得
+                    var num = class_name.slice(5); //class名の末尾の数字を取得
+                    $('.main li').hide(); //メインの画像を全て隠す
+                    $('.pic' + num).fadeIn(); //クリックしたサムネイルに対応するメイン画像を表示
+                });
+            });
+      .item-details-wrapper__container__inner__body__property
+        %table{:border => 1}
+          %tbody
+            %tr
+              %th 出品者
+              %td #{@item.user.nickname}
+            %tr
+              %th カテゴリ
+              %td 
+                =@category_parent.name 
+                %br/
+                =@category_children.name 
+                %br/
+                =@category_grandchildren.name 
+            %tr
+              %th ブランド
+              %td #{@item.brand}
+            %tr
+              %th 商品の状態
+              %td<
+                = @item_status.status
+            %tr
+              %th 送料の負担
+              %td<
+                = @charge.charge
+            %tr
+              %th 発送元地域
+              %td
+                = @shipping_area.name
+            %tr
+              %th 発送日の目安
+              %td 
+                =@shipping_days.days
+    .item-details-wrapper__container__inner__body__price
+      %p<
+        ¥ #{@item.price}
+        %s.item-details-wrapper__container__inner__body__price--small><
+          （税込）送料込み
+    - if user_signed_in? && current_user.id == @item.user.id
+      .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
+        %button{:disabled => 'disabled'} 購入画面に進む
+    - else
+      .item-details-wrapper__container__inner__body__purcharseBtn
+        = link_to '#' do
+          %button 購入画面に進む
+    .item-details-wrapper__container__inner__body__text
+      %p 
+        = @item.details
+    - if user_signed_in? && current_user.id == @item.user.id
+      .item-details-wrapper__container__inner__body__edit
+        = link_to edit_item_path(@item) do
+          = icon 'far', 'edit'
+          編集する
+        = link_to item_path(@item), method: 'delete', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
+          = icon 'far', 'trash-alt'
+          出品を取り下げる

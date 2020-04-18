@@ -1,0 +1,72 @@
+.buy-header
+  %h1
+    = link_to "#" do
+      = image_tag "/logo/logo.png" 
+.buy-main
+  = form_with model: @item, local: true do |form| 
+    .buy-main__sction
+      .buy-main__sction__head
+        %h2 購入内容の確認
+      .buy-main__sction__item
+        .buy-main__sction__item__inner
+          .buy-main__sction__item__inner__box
+            %h3.img
+              = image_tag "/a001.png"
+            .buy-main__sction__item__inner__box__detail
+              %p.name 商品名
+              %p.price 
+                %span 値段
+                %span.fee (税込)送料込み
+      .buy-main__sction__content
+        .buy-main__sction__content__inner
+          .buy-main__sction__content__inner__form
+            %ul.table
+              %li.pay
+                .buy-main__sction__content__inner__form__text
+                  支払い金額
+                .buy-main__sction__content__inner__form__price
+                  %span 値段
+            %ul.point
+              %li.box
+                .buy-main__sction__content__inner__form__main
+                  %input(type="checkbox")/
+                  %i
+                    %before
+                  %label(for="#") ポイントを使用 (所持ポイント: P0)
+            .buy-main__sction__content__inner__form__payment
+              .buy-main__sction__content__inner__form__payment__box
+                %h3 支払い方法
+                = link_to "#" do
+                  %p.register
+                    %i
+                      %before
+                    %span 登録してください
+            .buy-main__sction__content__inner__form__address
+              .buy-main__sction__content__inner__form__address__box
+                %h3 配送先
+                = link_to "#" do
+                  %p.register
+                    %i
+                      %before
+                    %span 登録してください
+            .buy-main__sction__content__inner__form__switch
+              .buy-main__sction__content__inner__form__switch__btn
+                = submit_tag("購入する", class:"purchase")
+.buy-footer
+  .buy-footer__nav
+    %ul.clear
+      %li
+      = link_to "#" do 
+        プライバシーポリシー
+      %li
+      = link_to "#" do 
+        利用規約 
+      %li
+      = link_to "#" do 
+        特定商取引に関する表記
+      %after
+  .buy-footer__logo
+    = link_to "#" do
+      = image_tag "/logo/logo-white.png" 
+  %p
+    %small ©️ Frima,inc.
