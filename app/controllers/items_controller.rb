@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :set_item, only: [:show, :destroy]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def index
@@ -8,7 +7,6 @@ class ItemsController < ApplicationController
     @categories = Category.includes(items: :item_images).roots.limit(1)
     @users = User.page(params[:page]).per(5)
     @parents = Category.where(ancestry: nil).order('id ASC')
-
   end
 
   def new
@@ -27,10 +25,6 @@ class ItemsController < ApplicationController
 
   
   def show
-
-    #@item = Item.find(params[:id])
-    #@image = @item.item_image
-
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
     @category_grandchildren = Category.find(@item.category_id)

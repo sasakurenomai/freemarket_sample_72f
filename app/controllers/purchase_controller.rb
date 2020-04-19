@@ -1,15 +1,14 @@
 class PurchaseController < ApplicationController
   require 'payjp'
   before_action :set_card, only:[:index, :pay]
-  before_action :set_item, only:[:pay, :done]
+  before_action :set_item, only:[:index, :pay, :done]
 
   def index
 
     if @card.blank?
       redirect_to controller: "card", action: "new"
     else
-      @item = Item.find(1)  #index内のeachループによる商品画像一覧展開が未実装の為、item.(1)を仮置き
-      @image = @item.item_image
+      @itemPics = @item.item_images.where(item_id: @item.id)
       Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
@@ -29,7 +28,7 @@ class PurchaseController < ApplicationController
   end
 
   def done
-    @image = @item.item_image
+    @itemPics = @item.item_images.where(item_id: @item.id)
     @buyer = @item.buyer_id
   end
 
@@ -39,6 +38,6 @@ class PurchaseController < ApplicationController
     end
 
     def set_item
-      @item = Item.find(params[:item_id])
+      @item = Item.find(params[:id])
     end
 end

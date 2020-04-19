@@ -80,18 +80,14 @@ gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'payjp'
-
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'jquery-rails'
-
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'kaminari'
 gem 'font-awesome-sass'
-
-gem 'jquery-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem 'ancestry'
