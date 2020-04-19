@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       post 'pay',  to: 'card#create' 
     end
   end
-
+  
   resources :items do
     resources :comments, only: :create
     collection do
@@ -32,7 +32,8 @@ Rails.application.routes.draw do
       end
     end
   end
-
   resources :users, only: [:show, :edit, :update]
   resources :buyers_sellers, only: [:show]
+
 end
+ 
