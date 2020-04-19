@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def index
-
     @items = Item.all.includes(:item_images)
     @categories = Category.includes(items: :item_images).roots.limit(1)
     @users = User.page(params[:page]).per(5)
