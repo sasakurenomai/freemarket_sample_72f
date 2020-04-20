@@ -23,6 +23,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @items = Item.all.includes(:item_images)
+
+  end
+
   
   def show
     @comment = Comment.new
