@@ -70,6 +70,6 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(1)
+    @item = Item.find(1) #画像出力の為、仮置き中
   end
 end
