@@ -11,6 +11,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_days
   belongs_to_active_hash :charge
 
+    ##belongs_to :user
+    ##has_one :item_image, dependent: :destroy
+    # belongs_to :category
 
   validates :name,        presence: true
   validates :details,     presence: true
