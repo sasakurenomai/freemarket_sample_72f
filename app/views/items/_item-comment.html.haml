@@ -1,0 +1,22 @@
+.item-details-wrapper__container.item-details-wrapper__container--border
+  .item-details-wrapper__container__inner
+    - if @comments
+      - @comments.each do |comment|
+        .item-details-wrapper__container__inner__comments
+          .item-details-wrapper__container__inner__comments__user-pic
+            - if comment.user.avatar.attached?
+              = image_tag comment.user.avatar
+            - else
+              = image_tag "/icon/member_photo_noimage_thumb.png"
+          .item-details-wrapper__container__inner__comments__body
+            = link_to comment.user.nickname, "/users/#{comment.user_id}"
+            .item-details-wrapper__container__inner__comments__body__comment
+              = comment.text
+    .item-details-wrapper__container__inner__comments-form
+      - if current_user
+        = form_for [@item, @comment] do |form|
+          = form.text_area :text, placeholder: 'コメント...'
+          = form.submit 'コメントする', { id: 'comment-send' }
+      - else
+        %strong
+          %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※

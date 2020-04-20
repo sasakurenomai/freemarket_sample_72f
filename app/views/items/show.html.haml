@@ -1,88 +1,7 @@
-= render partial: 'header'
+= render partial: 'items/header'
 .item-details-wrapper
-  .item-details-wrapper__container
-    .item-details-wrapper__container__inner
-      .item-details-wrapper__container__inner__title
-        %h1 #{@item.name}
-      .item-details-wrapper__container__inner__body
-        .item-details-wrapper__container__inner__body__photo
-          = image_tag @image.image_url, height: "300", width: "220"
-        .item-details-wrapper__container__inner__body__property
-          %table{:border => 1}
-            %tbody
-              %tr
-                %th 出品者
-                %td #{@item.user.nickname}
-              %tr
-                %th カテゴリ
-                %td カテゴリーを表示
-              %tr
-                %th ブランド
-                %td #{@item.brand}
-              %tr
-                %th 商品の状態
-                %td<
-                  - case @item.item_status
-                    - when 0 then
-                      新品、未使用
-                    - when 1 then
-                      未使用に近い
-                    - when 2 then
-                      目立った傷や汚れなし
-                    - when 3 then
-                      やや傷や汚れあり
-                    - when 4 then
-                      やや傷や汚れあり
-                    - when 5 then
-                      傷や汚れあり
-              %tr
-                %th 送料の負担
-                %td<
-                  - case @item.shipping_cost
-                    - when 0 then
-                      発送元払い
-                    - when 1 then
-                      着払い
-              %tr
-                %th 配送の方法
-                %td #{@item.shipping_how_to}
-              %tr
-                %th 発送元地域
-                %td #{@item.shipping_area}
-              %tr
-                %th 発送日の目安
-                %td #{@item.shipping_days}
-      .item-details-wrapper__container__inner__body__price
-        %p<
-          ¥ #{@item.price}
-          %s.item-details-wrapper__container__inner__body__price--small><
-            （税込）送料込み
-      - if user_signed_in? && current_user.id == @item.user.id
-        .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
-          %button{:disabled => 'disabled'} 購入画面に進む
-      - else
-        .item-details-wrapper__container__inner__body__purcharseBtn
-          = link_to item_purchase_index_path(@item.id) do
-            %button 購入画面に進む
-      .item-details-wrapper__container__inner__body__text
-        %p ここには商品の説明文が表示されます。
-      - if user_signed_in? && current_user.id == @item.user.id
-        .item-details-wrapper__container__inner__body__edit
-          = link_to edit_item_path, class: 'far fa-edit' do
-            編集する
-          = link_to item_path, method: 'delete', class: 'far fa-trash-alt', onclick: "return confirm('この商品の出品を取り下げます。よろしいですか？')" do
-            出品を取り下げる
-  .item-details-wrapper__container.item-details-wrapper__container--border
-    .item-details-wrapper__container__inner
-      .item-details-wrapper__container__inner__comments
-        .item-details-wrapper__container__inner__comments__user-pic
-          = image_tag '/a001.png'
-        .item-details-wrapper__container__inner__comments__comment
-          %p コメントが表示される
-      .item-details-wrapper__container__inner__comments-form
-        = form_with model: @comments do |form|
-          = form.text_area :text, placeholder: 'コメント...'
-          = form.submit 'コメントする', { id: 'comment-send' }
+  = render partial: 'items/item-detail'
+  = render partial: 'items/item-comment'
   .item-details-wrapper__container.item-details-wrapper__container--other
     .item-details-wrapper__container--other__navi
       .item-details-wrapper__container--other__navi__left
@@ -95,19 +14,21 @@
           = link_to "/items/#{@item.next.id}" do
             = @item.next.name
             = icon('fas', 'angle-double-right')
-
   .item-details-wrapper__category
-    -# カテゴリ機能が実装されてから反映する
     %ul
       %li<
         = link_to root_path do
           FURIMA
           = icon('fas', 'angle-right')
-      %li.item-details-wrapper__category__parent<
+      %li<
         = link_to '#' do
-          親カテゴリ
+          = @category_parent.name
           = icon('fas', 'angle-right')
-      %li.item-details-wrapper__category__child<
+      %li<
         = link_to '#' do
-          子カテゴリ
-= render partial: 'footer'
+          = @category_children.name
+          = icon('fas', 'angle-right')
+      %li<
+        = link_to '#' do
+          = @category_grandchildren.name 
+= render partial: 'items/footer'
