@@ -18,9 +18,9 @@ class PurchaseController < ApplicationController
   def pay
     Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
     Payjp::Charge.create(
-     amount: @item.price,
-     customer: @card.customer_id, 
-     currency: 'jpy',
+      amount: @item.price,
+      customer: @card.customer_id, 
+      currency: 'jpy',
     )
     
     @item.update_attribute(:buyer_id, current_user.id)
@@ -38,6 +38,6 @@ class PurchaseController < ApplicationController
     end
 
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.find(params[:item_id])
     end
 end
