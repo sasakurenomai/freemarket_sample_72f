@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.12.1"
+lock "~> 3.13.0"
 # 自身のアプリ名、リポジトリ名を記述
 set :application, 'freemarket_sample_72f'
 set :repo_url,  'git@github.com:ymkthr/freemarket_sample_72f.git'
