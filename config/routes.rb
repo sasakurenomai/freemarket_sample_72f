@@ -8,9 +8,8 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  get 'card/new'
   get 'card/index'
-  resources :card, only: [:show, :create, :destroy] do
+  resources :card, only: [:new, :show, :create, :destroy] do
     collection do
       post 'show', to: 'card#index'
       post 'pay',  to: 'card#create' 
