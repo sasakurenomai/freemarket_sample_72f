@@ -68,7 +68,7 @@
         %button{:disabled => 'disabled'} 購入画面に進む
     - else
       .item-details-wrapper__container__inner__body__purcharseBtn
-        = link_to item_purchase_path(@itemPics) do
+        = link_to item_purchase_path(@item.id) do
           %button 購入画面に進む
     .item-details-wrapper__container__inner__body__text
       %p 
