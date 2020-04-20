@@ -66,6 +66,9 @@
     - if user_signed_in? && current_user.id == @item.user.id
       .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
         %button{:disabled => 'disabled'} 購入画面に進む
+    - elsif @item.buyer_id.present?
+      .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
+        %button{:disabled => 'disabled'} 売り切れ
     - else
       .item-details-wrapper__container__inner__body__purcharseBtn
         = link_to item_purchase_path(@item.id) do
