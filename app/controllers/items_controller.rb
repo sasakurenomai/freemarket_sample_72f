@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
+  before_action :set_item, except: [:top, :index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def index
     @items = Item.all.includes(:item_images)
