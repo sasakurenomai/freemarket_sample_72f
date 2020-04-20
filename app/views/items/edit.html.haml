@@ -1,4 +1,5 @@
 .item__info
+  【商品情報を編集】
   - if @item.errors.any?
     %ul
       - @item.errors.full_messages.each do |item|
@@ -8,23 +9,21 @@
     =f.label :item_image, '出品画像（一枚以上必須）', class: "item__info--shipping_image"
     .item__info--image 
       #image-box
-        =f.fields_for :item_images do |i|
-          .js-file_group{"data-index": "#{i.index}"}
-            =i.file_field :image_url , class: "js-file", id: "image-file"
-            %label(for="image-file")
-              %i.fa.fa-camera
-            %span.js-remove
-              削除
-          -if @item.persisted?
-            =i.check_box :_destroy, data: { index: i.index }, class: 'hidden-destroy'
-          -if @item.persisted?
-            .js-file_group{"data-index": "#{@item.item_images.count}"}
-              = file_field_tag :image_url, name: "item[item_images_attributes][#{@item.item_images.count}][image_url]", class: "js-file"
-              .js-remove
-                削除
-          - @items.each do |item|
-            - item.item_images.each do |image|
-              = image_tag image.image_url.to_s
+        #previews
+          - if @item.persisted?
+            - @item.item_images.each_with_index do |image, i|
+              = image_tag image.image_url.url, data: { index: i }, width: "100", height: '100'
+        = f.fields_for :item_images do |image|
+          .js-file_group{"data-index" => image.index}
+            = image.file_field :image_url, class: 'js-file'
+            %br/
+            %span.js-remove 削除
+          - if @item.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+        - if @item.persisted?
+          .js-file_group{"data-index" => @item.item_images.count}
+            = file_field_tag :image_url, name: "product[item_images_attributes][#{@item.item_images.count}][image_url]", class: 'js-file'
+            .js-remove 削除
 
     =f.label :name, '商品名（必須）', class: "item__info--name"
     =f.text_field :name, class: "item__info--name--input"

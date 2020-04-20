@@ -24,8 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @items = Item.all.includes(:item_images)
-
   end
 
   
