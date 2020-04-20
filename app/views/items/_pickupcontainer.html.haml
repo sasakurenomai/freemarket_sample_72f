@@ -7,9 +7,9 @@
         %h3 新規投稿商品
     .pickup__product__lists
       .pickup__product__lists__list
-        = link_to item_path(@item.id), class: "item" do
+        = link_to "#", class: "item" do
           .pickup__product__lists__list__img
-            = image_tag @image.image_url, height: "300", width: "200"
+            = image_tag "/a007.png"
           .pickup__product__lists__list__body
             %h3 product3
             .pickup__product__lists__list__body__date
