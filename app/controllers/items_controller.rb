@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @items = Item.all.includes(:item_images)
     @item.item_images.new
   end
 
