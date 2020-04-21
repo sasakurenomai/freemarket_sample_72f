@@ -45,8 +45,10 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+      flash[:notice] = "出品情報が更新されました"
       redirect_to item_path
     else
+      flash.now[:alert] = "入力できていない項目があります"
       render :edit
     end
   end
