@@ -3,87 +3,18 @@
     %h2 ピックアップカテゴリー
   .pickup__product
     .pickup__product__box
-      = link_to "#" do
+      = link_to "items" do
         %h3 新規投稿商品
     .pickup__product__lists
-      .pickup__product__lists__list
-        = link_to "#", class: "item" do
-          .pickup__product__lists__list__img
-            = image_tag "/a007.png"
-          .pickup__product__lists__list__body
-            %h3 product3
-            .pickup__product__lists__list__body__date
-              %ul.praces
-                %li.prace 30000円
-                %li.prace
-                  %i ★ 0
-              %p (税込)
-      .pickup__product__lists__list
-        = link_to "#" do
-          .pickup__product__lists__list__img
-            = image_tag "/a004.png"
-          .pickup__product__lists__list__body
-            %h3 product2
-            .pickup__product__lists__list__body__date
-              %ul
-                %li 20000円
-                %li
-                  %i ★ 0
-              %p (税込)
-      .pickup__product__lists__list
-        = link_to "#" do
-          .pickup__product__lists__list__img
-            = image_tag "/a001.png"
-          .pickup__product__lists__list__body
-            %h3 product1
-            .pickup__product__lists__list__body__date
-              %ul
-                %li 10000円
-                %li
-                  %i ★ 0
-              %p (税込)
+      = render partial: 'itemcard', locals: { item: @item }
+
 %last-child
   .pickup
     .pickup__head
       %h2 ピックアップブランド
     .pickup__product
       .pickup__product__box
-        = link_to "#" do
+        = link_to "items" do
           %h3 アーカイブ
       .pickup__product__lists
-        .pickup__product__lists__list
-          = link_to "#", class: "item" do
-            .pickup__product__lists__list__img
-              = image_tag "/a007.png"
-            .pickup__product__lists__list__body
-              %h3 product3
-              .pickup__product__lists__list__body__date
-                %ul.praces
-                  %li.prace 30000円
-                  %li.prace
-                    %i ★ 0
-                %p (税込)
-        .pickup__product__lists__list
-          = link_to "#" do
-            .pickup__product__lists__list__img
-              = image_tag "/a004.png"
-            .pickup__product__lists__list__body
-              %h3 product2
-              .pickup__product__lists__list__body__date
-                %ul
-                  %li 20000円
-                  %li
-                    %i ★ 0
-                %p (税込)
-        .pickup__product__lists__list
-          = link_to "#" do
-            .pickup__product__lists__list__img
-              = image_tag "/a001.png"
-            .pickup__product__lists__list__body
-              %h3 product1
-              .pickup__product__lists__list__body__date
-                %ul
-                  %li 10000円
-                  %li
-                    %i ★ 0
-                %p (税込)
+        = render partial: 'itemcard', locals: { item: @item }

@@ -1,0 +1,18 @@
+.all-item__main__right__lists
+  - @items.each do |item|
+    .all-item__main__right__lists__list
+      = link_to item_path(item), class: "link" do
+        .all-item__main__right__lists__list__img
+          - item.item_images.each do |image|
+            = image_tag image.image_url.to_s
+        .all-item__main__right__lists__list__body
+          %h3.name= item.name
+          .all-item__main__right__lists__list__body__details
+            %ul
+              %li= item.price
+              %li
+                %i ★ 0
+            %p (税込)
+          -if item.buyer_id.present?
+            .all-item__main__right__lists__list__body__detail__sold
+              .all-item__main__right__lists__list__body__detail__sold__sall SOLD
