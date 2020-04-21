@@ -18,6 +18,8 @@
         - exp_year = @card_information.exp_year.to_s.slice(2,3)
         = exp_month + " / " + exp_year
       = f.submit "カード削除", class: "content__credit-cards__list__remove"
+      %br
+      = link_to "トップページへ", root_path,class: "content__credit-cards__listpage"
   - else
     .content__credit-cards__register-box
       = link_to "カード登録",new_card_path, class: "content__credit-cards__list-rejister", "data-turbolinks": false 

@@ -12,12 +12,18 @@
   cursor: pointer;
 }
 
+img.done{
+  display: block;
+  width: auto;
+  height: auto;
+}
+
 .buyer{
   height: 50px;
   width: 50px;  
   position: absolute;
   top: 0px;
-  left: 210px;
+  left: 0px;
   border-bottom: 50px solid transparent;
   border-left: 50px solid red;
   border-top: 50px solid red;

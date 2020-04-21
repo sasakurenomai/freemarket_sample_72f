@@ -9,12 +9,10 @@
 .content__credit-cards-purchase
   %h2 購入が完了しました
   .content__credit-cards-purchase__item-information
-    - @item.item_images.each do |image|
-      = image_tag image.image_url.to_s, class: "purchase"
-      -if @buyer.present?
-        .buyer
-          %span.sold sold
-
+    = image_tag @image, class: "done"
+    -if @buyer.present?
+      .buyer
+        %span.sold sold
   %p 
     = @item.name
   %br

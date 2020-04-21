@@ -9,8 +9,7 @@
 .content__credit-cards-purchase
   %h2 購入内容確認
   .content__credit-cards-purchase__item-information
-    - @item.item_images.each do |image|
-      = image_tag image.image_url.to_s
+    = image_tag @image, class: "purchase"
   %p 
     = @item.name
   %br
