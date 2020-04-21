@@ -39,7 +39,7 @@
   width: 700px;
   background-color:white;
   margin: 10px auto;
-  margin-bottom:80px;
+  margin-bottom:120px;
 
   h2{  
     text-align: center;
@@ -56,19 +56,10 @@
   }
 
   &__item-information{
-    height: 200px;
-    width: 300px;
-    background-color: yellow;
+    text-align: center;
     margin: 0 auto;
     margin-top: 20px;
     position: relative;
-
-    img.purchase{
-      transform: rotate(-90deg);
-      position: absolute;
-      left: 50px;
-      top:  -50px;
-    }
   }
 
   &__payment-information{

@@ -11,19 +11,12 @@
   font-size: 20px;
   cursor: pointer;
 }
-img.done{
-  transform: rotate(-90deg);
-  position: absolute;
-  left: 50px;
-  top:  -50px;
-}
 
 .buyer{
   height: 50px;
   width: 50px;  
-  float: left;
   position: absolute;
-  top: 265px;
+  top: 0px;
   left: 210px;
   border-bottom: 50px solid transparent;
   border-left: 50px solid red;
