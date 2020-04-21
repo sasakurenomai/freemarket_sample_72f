@@ -21,12 +21,24 @@ set :linked_files, %w{ config/master.key }
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
+
   desc 'Create database'
   task :db_create do
     on roles(:db) do |host|
       with rails_env: fetch(:rails_env) do
         within current_path do
           execute :bundle, :exec, :rake, 'db:create'
+        end
+      end
+    end
+  end
+
+  desc 'db_seed must be run only one time right after the first deploy'
+  task :db_seed do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'db:seed'
         end
       end
     end
