@@ -145,21 +145,18 @@
 }
 
 .item__info{
+  &--image{
+    overflow: scroll;
+  }
   li{
     color: red;
   }
 }
 
-#image-file{
-  display: none;
-  &-new{
-    display: none;
-  }
-}
 
-.js-file{
-  display: none;
-}
+// .js-file{
+//   display: none;
+// }
 
 #previews{
   display: flex;
