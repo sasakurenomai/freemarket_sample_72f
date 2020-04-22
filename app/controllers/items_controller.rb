@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(@item.category_id)
     @category_children = @category_grandchildren.parent
     @category_parent = @category_children.parent
+    @itemPics = @item.item_images.where(item_id: @item.id)
 
     @item_status = ItemStatus.find(@item.item_status_id)
     @charge = Charge.find(@item.charge_id)
@@ -42,7 +43,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = @item.category
     @category_children = @category_grandchildren.parent
     @category_parent = @category_children.parent
-    
+
     @itemPics = @item.item_images.where(item_id: @item.id)
   end
 

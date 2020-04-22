@@ -1,7 +1,7 @@
 $(function(){
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
-                    <input type="file"
+                    <input calss="js-file" type="file"
                     name="item[item_images_attributes][${index}][image_url]"
                     id="item_item_images_attributes_${index}_image_url image-file"><br>
                     <div class="js-remove">削除</div>
@@ -24,7 +24,7 @@ $(function(){
   $('.hidden-destroy').hide();
 
   $('#image-box').on('change', '.js-file', function(e){
-    $('#previews').append(buildFileField(fileIndex[0]));
+    $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
   });
