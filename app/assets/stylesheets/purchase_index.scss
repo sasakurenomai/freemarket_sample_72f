@@ -38,11 +38,10 @@
   height: 800px;
   width: 700px;
   background-color:white;
-  margin: 10px auto;
-  margin-bottom:80px;
+  margin: 20px auto 180px auto;
+  text-align: center;
 
   h2{  
-    text-align: center;
     line-height: 2.5;
     height: 50px;
     font-size: 20px;
@@ -51,23 +50,19 @@
 
   p{  
     font-size: 20px;
-    text-align: center;
     margin-top: 20px;
   }
 
   &__item-information{
-    height: 200px;
-    width: 300px;
-    background-color: yellow;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto;
+    display: inline-block;
     position: relative;
+    background-color: gray;
 
-    img{
-      transform: rotate(-90deg);
-      position: absolute;
-      left: 50px;
-      top: -50px;
+    img.purchase{
+      display: block;
+      width: auto;
+      height: auto;
     }
   }
 
