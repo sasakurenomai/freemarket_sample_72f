@@ -1,42 +1,42 @@
-.container
-  .container__header
-    = link_to root_path do
+-#他ファイルのsassに干渉する為、.wrapper-deviseのブロックのみ追記
+.wrapper-devise
+
+  .container
+    .container__header
       = image_tag '/logo/logo.png'
-  .container__main
-    - flash.each do |name, msg|
-      = content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String)
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "top-input"
-      .field
-        = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
-      - if devise_mapping.rememberable?
-        .field{ class: 'hidden' }
-          = f.check_box :remember_me, checked: "checked"
-          = f.label :remember_me
-      .actions{ class: 'loginBtn' }
-        = f.submit "ログイン"
-    .container__main__devise
-      - if devise_mapping.registerable? && controller_name != 'registrations'
-        = link_to "新規登録", new_registration_path(resource_name)
-        %br/
-      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-        = link_to "パスワードの再発行", new_password_path(resource_name)
-  .container__footer
-    .container__footer__navi
-      %nav
-        %ul
-          %li
-            = link_to '#' do
-              運営会社について
-          %li
-            = link_to '#' do
-              プライバシーポリシー
-          %li
-            = link_to '#' do
-              FURIMA利用規約
-          %li
-            = link_to '#' do
-              ポイントに関する特約
-    %br/
-    %p © FURIMA
+    .container__main
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "top-input"
+        .field
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+        - if devise_mapping.rememberable?
+          .field{ class: 'hidden' }
+            = f.check_box :remember_me, checked: "checked"
+            = f.label :remember_me
+        .actions{ class: 'loginBtn' }
+          = f.submit "ログイン"
+      .container__main__devise
+        - if devise_mapping.registerable? && controller_name != 'registrations'
+          = link_to "新規登録", new_registration_path(resource_name)
+          %br/
+        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+          = link_to "パスワードの再発行", new_password_path(resource_name)
+    .container__footer
+      .container__footer__navi
+        %nav
+          %ul
+            %li
+              = link_to '#' do
+                運営会社について
+            %li
+              = link_to '#' do
+                プライバシーポリシー
+            %li
+              = link_to '#' do
+                FURIMA利用規約
+            %li
+              = link_to '#' do
+                ポイントに関する特約
+      %br/
+      %p © FURIMA

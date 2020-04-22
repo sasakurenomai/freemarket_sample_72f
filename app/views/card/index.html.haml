@@ -1,0 +1,41 @@
+.content-container
+  .content-container__header
+    %h1
+      =  link_to root_path do
+        =  image_tag "/logo/logo-white.png"
+  .content-container__main
+    .content-container__main__body
+      %h2.body-chapter  クレジットカード
+
+.content__credit-cards
+  - if @card.present?
+    = form_with url: card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
+      = image_tag @card_src, size: "250x200"
+      .content__credit-cards__list--pay-num
+        = "**** **** **** " + @card_information.last4
+      .content__credit-cards__list--pay-num
+        - exp_month = @card_information.exp_month.to_s
+        - exp_year = @card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
+      = f.submit "カード削除", class: "content__credit-cards__list__remove"
+      %br
+      = link_to "トップページへ", root_path,class: "content__credit-cards__listpage"
+  - else
+    .content__credit-cards__register-box
+      = link_to "カード登録",new_card_path, class: "content__credit-cards__list-rejister", "data-turbolinks": false 
+        
+.content-container__footer
+  .content-container__footer__nav
+    %ul.footer-list
+      %li.footer-privacy プライバシーポリシー
+      %li.footer-terms FURIMA利用規約
+      %li.footer-transacation 特定商取引に関する表記
+    = link_to root_path do
+      = image_tag "https://i.gyazo.com/af9930889141532d7485401ea406d64b.png"
+    %br
+    %span.footer-logo
+      FURIMA
+    %br
+    %i ©︎
+    %small
+      FURIMA, Inc.

@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
+  before_action :set_item, except: [:top, :index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def index
     @items = Item.all.includes(:item_images)
+    @categories = Category.includes(items: :item_images).roots.limit(1)
+    @users = User.page(params[:page]).per(5)
     @parents = Category.where(ancestry: nil).order('id ASC')
   end
 
@@ -40,6 +42,8 @@ class ItemsController < ApplicationController
     @category_grandchildren = @item.category
     @category_children = @category_grandchildren.parent
     @category_parent = @category_children.parent
+    
+    @itemPics = @item.item_images.where(item_id: @item.id)
   end
 
   def update

@@ -1,0 +1,41 @@
+.content-container
+  .content-container__header
+    %h1
+      = link_to root_path do
+        = image_tag "/logo/logo-white.png"
+  .content-container__main
+    .content-container__main__body
+      %h2.body-chapter  購入完了画面
+.content__credit-cards-purchase
+  %h2 購入が完了しました
+  .content__credit-cards-purchase__item-information
+    = image_tag @image, class: "done"
+    -if @buyer.present?
+      .buyer
+        %span.sold sold
+  %p 
+    = @item.name
+  %br
+  %h2 支払金額
+  %p 
+    ¥
+    = @item.price 
+    （ 送料税込み )
+  %br
+  = link_to "トップ画面に戻る", root_path, class: "root-back"
+
+.content-container__footer-credit
+  .content-container__footer-credit__nav
+    %ul.footer-list
+      %li.footer-privacy プライバシーポリシー
+      %li.footer-terms FURIMA利用規約
+      %li.footer-transacation 特定商取引に関する表記
+    = link_to root_path do
+      = image_tag "https://i.gyazo.com/af9930889141532d7485401ea406d64b.png"
+    %br
+    %span.footer-logo
+      FURIMA
+    %br
+    %i ©︎
+    %small
+      FURIMA, Inc.
