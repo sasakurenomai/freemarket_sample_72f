@@ -56,7 +56,8 @@ $(function(){
   })
 
   $('#item_category-box').on('change','#children_category',  function(){
-    var childId = $('#children_category option:selected').data('category');
+    // var childId = $('#children_category option:selected').data('category');
+    var childId = document.getElementById('children_category').value;
     if (childId != "---"){
       $.ajax({
         url: 'get_category_grandchildren', 
@@ -81,4 +82,6 @@ $(function(){
       $('#grandchildren_wrapper').remove();
     }
   });
+
+  
 });

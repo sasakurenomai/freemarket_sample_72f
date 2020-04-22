@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @items = Item.all.includes(:item_images)
     @item.item_images.new
   end
 
@@ -33,19 +34,25 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(@item.category_id)
     @category_children = @category_grandchildren.parent
     @category_parent = @category_children.parent
+    @itemPics = @item.item_images.where(item_id: @item.id)
 
     @item_status = ItemStatus.find(@item.item_status_id)
     @charge = Charge.find(@item.charge_id)
     @shipping_area = ShippingArea.find(@item.shipping_area_id)
     @shipping_days = ShippingDays.find(@item.shipping_days_id)
+  end
+  
+  def edit
+    @category_grandchildren = @item.category
+    @category_children = @category_grandchildren.parent
+    @category_parent = @category_children.parent
 
-    # 商品画像
     @itemPics = @item.item_images.where(item_id: @item.id)
   end
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to item_path
     else
       render :edit
     end
