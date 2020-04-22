@@ -2,11 +2,14 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
   before_action :set_item, except: [:top, :index, :new, :create, :get_category_children, :get_category_grandchildren]
 
+  def top
+    @items = Item.all.includes(:item_images)
+  end
+
   def index
     @items = Item.all.includes(:item_images)
-    @categories = Category.includes(items: :item_images).roots.limit(1)
     @users = User.page(params[:page]).per(5)
-    @parents = Category.where(ancestry: nil).order('id ASC')
+    @parents = Category.where(ancestry: nil).order('id ASC').limit(13)
   end
 
   def new
