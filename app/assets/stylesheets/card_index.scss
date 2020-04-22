@@ -1,0 +1,135 @@
+.content-container{
+  
+  &__header{
+    text-align: center;
+    background-color: #3CCACE;
+    height: 100px;
+
+    h1{
+      display: inline-block;
+      margin: 25px 0 0;
+
+      img{
+        height: 55px;
+        width: 190px;
+      }    
+    }
+  }
+}
+
+.content-container__main{
+  padding: 10px;
+
+  &__body{
+    padding: 0px;
+
+    h2{
+      font-size: 25px;
+      font-weight: bold;
+      border-bottom: 1px solid #EEEEEE;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.content__credit-cards{
+  height: 600px;
+  width: 500px;
+  background-color:white;
+  margin: 10px auto;
+
+  #charge-form{
+
+    img{
+      margin-left: 120px;
+      text-align: center;
+      margin-top: 70px;
+      margin-bottom: 50px;
+    }  
+  }
+
+  &__list--pay-num{  
+    margin-left: 155px;
+    margin-top: 0px;
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  &__list__remove{
+    background-color: blue;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 150px;
+    margin-left: 180px;
+    margin-top: 50px;
+    cursor: pointer;
+  }
+
+  .content__credit-cards__register-box{
+    background-color: red;
+    text-align: center;
+    line-height: 3.0;
+    border: none;
+    height: 50px;
+    width: 150px;
+    margin-left: 175px;
+    margin-top: 50px;
+    
+    .content__credit-cards__list-rejister{
+      display: block;
+      color: white;
+    }
+  }
+}
+
+.content-container__footer{
+  height: 250px;
+  width: 100%;
+  background-color: gray;
+  text-align: center;
+  
+  &__nav{
+    margin-left: 20px;
+    padding-top: 20px;
+  }
+  
+  .footer-list{
+    font-size: 11px;
+    padding-top: 0px;  
+    line-height: 25px;
+  }
+
+  a{
+    display: inline-block;
+    height: 60px;
+    width: 50px;
+    padding-top: 10px;
+  }
+
+  img{
+    margin-top: 30px;
+    height: 50px;
+    width: 50px;
+    vertical-align: -7px;
+  }
+  
+  .footer-logo{
+    font-weight: bold;
+    color: #BBBBBB;
+  }
+
+  i{
+    font-size: 18px;
+  }
+  
+  small{
+    vertical-align: 3px;
+    font-size: 10px;
+  }
+}
