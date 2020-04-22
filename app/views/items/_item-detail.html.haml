@@ -62,13 +62,16 @@
       %p<
         ¥ #{@item.price}
         %s.item-details-wrapper__container__inner__body__price--small><
-          （税込）送料込み
+          （税込）
     - if user_signed_in? && current_user.id == @item.user.id
       .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
         %button{:disabled => 'disabled'} 購入画面に進む
+    - elsif @item.buyer_id.present?
+      .item-details-wrapper__container__inner__body__purcharseBtn.item-details-wrapper__container__inner__body__purcharseBtn--disable
+        %button{:disabled => 'disabled'} 売り切れ
     - else
       .item-details-wrapper__container__inner__body__purcharseBtn
-        = link_to '#' do
+        = link_to item_purchase_path(@item.id) do
           %button 購入画面に進む
     .item-details-wrapper__container__inner__body__text
       %p 

@@ -3,6 +3,24 @@
   &__main {
     padding: 40px;
     margin: 0 auto;
+    &__on {
+      width: 700px;
+      margin: 0 auto;
+      padding: 16px 8px;
+      a.category {
+        background-color: #fff;
+        float: left;
+        border-radius: 4px;
+        min-width: 80px;
+        line-height: 40px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-align: center;
+        padding: 0 30px;
+        margin: 5px;
+        color: #333;
+        text-decoration: none;
+      }
+    }
     &__left {
       float: left;
     }

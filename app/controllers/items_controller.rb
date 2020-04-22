@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.includes(:item_images)
-    @categories = Category.includes(items: :item_images).roots.limit(1)
     @users = User.page(params[:page]).per(5)
     @parents = Category.where(ancestry: nil).order('id ASC').limit(13)
   end

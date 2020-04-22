@@ -1,0 +1,63 @@
+.content-container
+  .content-container__header
+    %h1
+      = link_to root_path do
+        = image_tag "/logo/logo-white.png"
+  .content-container__main
+    .content-container__main__body
+      %h2.body-chapter  購入完了画面
+.content__credit-cards-purchase
+  %h2 購入が完了しました
+  %ul.content__credit-cards-purchase__item-information
+  - @itemPics.each_with_index do |itemPic, i|
+    - if i == 0
+      %li{class: "pic#{i}"}
+        %img{src: "#{itemPic.image_url}"}
+    - else
+      %li{class: "pic#{i}", style: "display: none;"}
+        %img{src: "#{itemPic.image_url}"}
+  %ul.thumb
+    - @itemPics.each_with_index do |itemPic, i|
+      %li{class: "thumb#{i}"}
+        %img{src: "#{itemPic.image_url}"}
+        
+  :javascript
+    $(function(){
+          $('.thumb li').click(function(){
+              var class_name = $(this).attr("class"); //クリックしたサムネイルのclass名を取得
+              var num = class_name.slice(5); //class名の末尾の数字を取得
+              $('.main li').hide(); //メインの画像を全て隠す
+              $('.pic' + num).fadeIn(); //クリックしたサムネイルに対応するメイン画像を表示
+          });
+      });
+    
+  -#-if @buyer.present? 画像出力調整後に再度設定予定
+    -#.buyer
+    -#%span.sold sold
+  
+  %p 
+    = @item.name
+  %br
+  %h2 支払金額
+  %p 
+    ¥
+    = @item.price 
+    （ 送料税込み )
+  %br
+  = link_to "トップ画面に戻る", root_path, class: "root-back"
+
+.content-container__footer-credit
+  .content-container__footer-credit__nav
+    %ul.footer-list
+      %li.footer-privacy プライバシーポリシー
+      %li.footer-terms FURIMA利用規約
+      %li.footer-transacation 特定商取引に関する表記
+    = link_to root_path do
+      = image_tag "https://i.gyazo.com/af9930889141532d7485401ea406d64b.png"
+    %br
+    %span.footer-logo
+      FURIMA
+    %br
+    %i ©︎
+    %small
+      FURIMA, Inc.
