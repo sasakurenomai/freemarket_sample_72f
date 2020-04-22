@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:top, :index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   def top
-    @items = Item.all.includes(:item_images)
+    @items = Item.all.includes(:item_images).order('id DESC').limit(3)
   end
 
   def index
