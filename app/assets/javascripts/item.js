@@ -1,7 +1,7 @@
 $(function(){
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"
+                    <input calss="js-file" type="file"
                     name="item[item_images_attributes][${index}][image_url]"
                     id="item_item_images_attributes_${index}_image_url image-file"><br>
                     <div class="js-remove">削除</div>
@@ -12,6 +12,7 @@ $(function(){
   const buildImg = (index, url) => {
     const html = `<div class="item_image">
     <img data-index="${index}" src="${url}" width="100px" height="100px">
+      <div class="js-remove">削除</div>
     </div>`;
     return html;
   }
@@ -45,9 +46,18 @@ $(function(){
     if(img = $(`img[data-index="${targetIndex}]`)[0]){
       img.setAttribute('src', blobUrl);
     }else{
-      $('#image-box').before(buildImg(targetIndex, blobUrl));
+      $('#previews').append(buildImg(targetIndex, blobUrl));
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
+  });
+
+  $('#image-box').on('click', '.js-removes', function(){
+    const targetIndex = $(this).parent().data('index')
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    if (hiddenCheck){ hiddenCheck.prop('checked', true);
+    $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).remove();}
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 });

@@ -8,7 +8,8 @@ class PurchaseController < ApplicationController
     if @card.blank?
       redirect_to controller: "card", action: "new"
     else
-      @itemPics = @item.item_images.where(item_id: @item.id)
+      images = @item.item_images
+      @image = images[0].image_url.to_s
       Payjp.api_key = "#{Rails.application.credentials.PAYJP_PRIVATE_KEY}"
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
@@ -28,7 +29,8 @@ class PurchaseController < ApplicationController
   end
 
   def done
-    @itemPics = @item.item_images.where(item_id: @item.id)
+    images = @item.item_images
+    @image = images[0].image_url.to_s
     @buyer = @item.buyer_id
   end
 

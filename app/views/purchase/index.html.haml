@@ -8,27 +8,8 @@
       %h2.body-chapter 購入確認画面
 .content__credit-cards-purchase
   %h2 購入内容確認
-  %ul.content__credit-cards-purchase__item-information
-    - @itemPics.each_with_index do |itemPic, i|
-      - if i == 0
-        %li{class: "pic#{i}"}
-          %img{src: "#{itemPic.image_url}"}
-      - else
-        %li{class: "pic#{i}", style: "display: none;"}
-          %img{src: "#{itemPic.image_url}"}
-  %ul.thumb
-    - @itemPics.each_with_index do |itemPic, i|
-      %li{class: "thumb#{i}"}
-        %img{src: "#{itemPic.image_url}"}
-  :javascript
-    $(function(){
-          $('.thumb li').click(function(){
-              var class_name = $(this).attr("class"); //クリックしたサムネイルのclass名を取得
-              var num = class_name.slice(5); //class名の末尾の数字を取得
-              $('.main li').hide(); //メインの画像を全て隠す
-              $('.pic' + num).fadeIn(); //クリックしたサムネイルに対応するメイン画像を表示
-          });
-      });
+  .content__credit-cards-purchase__item-information
+    = image_tag @image, class: "purchase"
   %p 
     = @item.name
   %br
