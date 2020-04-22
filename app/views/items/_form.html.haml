@@ -4,15 +4,13 @@
       - @item.errors.full_messages.each do |item|
         %li
           = item
-  =form_with model: @item, local:true do |f|
+  =form_with model: @item, local: true do |f|
     =f.label :item_image, '出品画像（一枚以上必須）', class: "item__info--shipping_image"
     .item__info--image 
       #image-box
         =f.fields_for :item_images do |i|
           .js-file_group{"data-index": "#{i.index}"}
             =i.file_field :image_url , class: "js-file", id: "image-file"
-            -# %label(for="image-file")
-            -#   %i.fa.fa-camera                scssでdisplay:noneやitem.jsなどでもコメントアウトあり
             %span.js-remove
               削除
           -if @item.persisted?

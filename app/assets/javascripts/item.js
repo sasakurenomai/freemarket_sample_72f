@@ -1,7 +1,7 @@
 $(function(){
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
-                    <input calss="js-file" type="file"
+                    <input class="js-file" type="file"
                     name="item[item_images_attributes][${index}][image_url]"
                     id="item_item_images_attributes_${index}_image_url image-file"><br>
                     <div class="js-remove">削除</div>
