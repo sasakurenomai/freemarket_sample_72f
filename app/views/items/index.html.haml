@@ -3,14 +3,10 @@
 
 .all-item
   .all-item__main
-    .all-item__main__on
-      - @parents.each do |parent|
-        = link_to "#", class: 'category' do
-          =parent.name
     .all-item__main__left
     .all-item__main__right
       .all-item__main__right__box
-        %h2 カテゴリー一覧
+        %h2 新着商品一覧
       = render partial: 'itemcard'
     
 = paginate @users
