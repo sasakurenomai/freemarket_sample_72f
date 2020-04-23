@@ -30,15 +30,15 @@
           display: flex;
           width: 100%;
           margin-bottom: 5px;
-          input{
-            width: calc(100% - 26px);
-          }
+          // input{
+          //   width: calc(100% - 26px);
+          // }
         }
-        &--input{
+        &__input{
           width: calc(100% - 26px);
           height: 36px;
         }
-        button{
+        &__submit{
           width: 36px;
           border: 0;
           cursor: pointer;

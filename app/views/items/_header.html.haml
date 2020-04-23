@@ -6,13 +6,9 @@
           = link_to root_path do
             = image_tag '/logo/logo.png'
       .header__inner__main__searchBox
-        %form
-          %input{ class:'header__inner__main__searchBox--input', placeholder: 'キーワードから探す' }
-          %button{ type: 'submit' }
-            .header__inner__main__searchBox__icon
-              = image_tag '/icon/icon-search 1.png'
-        .header__inner__main__searchBox__results
-          -# 検索結果を表示する
+        = form_with(url: search_items_path, local: true, method: :get) do |form|
+          = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__inner__main__searchBox__input"
+          = image_submit_tag "/icon/icon-search 1.png", class: "header__inner__main__searchBox__submit"
     .header__inner__nav
       %ul{ class: 'header__inner__nav__listLeft' }
         %li{ class: 'header__inner__nav__listLeft__item header__inner__nav__listLeft__item--first' }
