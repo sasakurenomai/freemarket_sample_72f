@@ -19,7 +19,7 @@
                 - @item.item_images.each_with_index do |image, i|
                   #preview{data: {index: i}}
                     = image_tag image.image_url.url, data: { index: i }, width: "100", height: '100', class: 'item_preview'
-                    .js-removes 削除
+                    .js-remove2 削除
             = f.fields_for :item_images do |img|
               .js-file_group{"data-index" => img.index}
                 = img.file_field :image_url, class: 'js-files', id: "image-file[#{img.index}]"
@@ -27,8 +27,8 @@
                 = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
             - if @item.persisted?
               .js-file_group{"data-index" => @item.item_images.count}
-                = file_field_tag :image_url, name: "item[item_images_attributes][#{@item.item_images.count}][image_url]", class: 'js-file', id: 'image-file-new'
-                %label(for="image-file-new")
+                = file_field_tag :image_url, name: "item[item_images_attributes][#{@item.item_images.count}][image_url]", class: 'js-files',  id: "item_item_images_attributes_#{@item.item_images.count}_id"
+                %label(id= "label-box--#{@item.item_images.count}" class="label-box" for="item_item_images_attributes_#{@item.item_images.count}_id")
                   .image-file-btn
                     画像を追加
         =f.label :name, '商品名（必須）', class: "item__info--name"
