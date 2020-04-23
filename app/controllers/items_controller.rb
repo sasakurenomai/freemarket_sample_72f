@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :set_item, except: [:top, :index, :new, :create, :get_category_children, :get_category_grandchildren]
+  before_action :set_item, except: [:top, :index, :new, :create, :search, :get_category_children, :get_category_grandchildren]
 
   def top
     @items = Item.all.includes(:item_images)
@@ -75,9 +75,35 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+
+    #アイテムにに紐付く商品画像を表示
+    @pic = []
+    @items.each do |item|
+      pic = ItemImage.find_by(item_id: item.id)
+      @pic << pic
+    end
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :details, :price, :item_status_id, :shipping_area_id, :shipping_days_id, :category_id,:charge_id, :brand, item_images_attributes: [:image_url, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(
+      :name,
+      :details,
+      :price,
+      :item_status_id,
+      :shipping_area_id,
+      :shipping_days_id,
+      :category_id,
+      :charge_id,
+      :brand,
+      item_images_attributes: [
+        :image_url,
+        :_destroy,
+        :id
+      ]
+    ).merge(user_id: current_user.id)
   end
 
   def set_item

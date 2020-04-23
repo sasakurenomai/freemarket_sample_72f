@@ -11,10 +11,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_days
   belongs_to_active_hash :charge
 
-    ##belongs_to :user
-    ##has_one :item_image, dependent: :destroy
-    # belongs_to :category
-
   validates :name,        presence: true
   validates :details,     presence: true
   validates :price,       presence: true
@@ -24,4 +20,8 @@ class Item < ApplicationRecord
   validates :shipping_area_id, presence:true
   validates :shipping_days_id, presence: true
 
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
 end

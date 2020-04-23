@@ -1,0 +1,31 @@
+.search
+  .search__container
+    -if @items.empty?
+      .search__container__item.search__container__item--first
+        %p.search__container__item__no-match 検索キーワードに一致する商品が見つかりませんでした。
+    - else
+      - i = 0
+      - @items.zip(@pic).each do |item, pic|
+        - if i == 0
+          = link_to item_path(item) do
+            .search__container__item.search__container__item--first
+              = image_tag pic.image_url.url, class: 'search__container__item__pic'
+              .search__container__item__text
+                .search__container__item__text__title
+                  %h3<
+                    = item.name
+                .search__container__item__text__desc
+                  %p<
+                    = item.details
+          - i += 1
+        - else
+          = link_to item_path(item) do
+            .search__container__item
+              = image_tag pic.image_url.url, class: 'search__container__item__pic'
+              .search__container__item__text
+                .search__container__item__text__title
+                  %h3<
+                    = item.name
+                .search__container__item__text__desc
+                  %p<
+                    = item.details
