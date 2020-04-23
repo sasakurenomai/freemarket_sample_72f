@@ -56,7 +56,7 @@
       %a.link_order(href="#")
         発送元・お届け先住所変更
         %i.fa.fa-angle-right
-      %a.link_order(href="#")
+      %a.link_order(href="#{card_index_path}")
         支払い方法
         %i.fa.fa-angle-right
       %a.link_order(href="#")
@@ -86,7 +86,6 @@
               評価
             .mypage-user__info--item_number
               出品数
-            = link_to "カード変更", card_index_path, class: "mypage-user__info--item__card"
       .mypage-tab-container-notification-todo
         .mypage-tabs
           %a.notification(href="#")
