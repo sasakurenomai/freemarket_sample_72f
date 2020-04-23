@@ -32,7 +32,7 @@ $(function(){
     var parentValue = document.getElementById('parent_category').value;
     if (parentValue != "---"){
       $.ajax({
-        url: 'get_category_children',
+        url: '/items/get_category_children',
         type: 'GET',
         data: { parent_id: parentValue },
         dataType: 'json'
@@ -60,7 +60,7 @@ $(function(){
     var childId = document.getElementById('children_category').value;
     if (childId != "---"){
       $.ajax({
-        url: 'get_category_grandchildren', 
+        url: '/items/get_category_grandchildren', 
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
