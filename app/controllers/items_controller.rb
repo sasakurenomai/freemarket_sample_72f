@@ -7,9 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.includes(:item_images)
+    @items = Item.all.includes(:item_images).order("created_at DESC")
     @users = User.page(params[:page]).per(5)
-    @parents = Category.where(ancestry: nil).order('id ASC').limit(13)
   end
 
   def new
