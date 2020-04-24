@@ -6,77 +6,15 @@
           = link_to root_path do
             = image_tag '/logo/logo.png'
       .header__inner__main__searchBox
-        %form
-          %input{ class:'header__inner__main__searchBox--input', placeholder: 'キーワードから探す' }
-          %button{ type: 'submit' }
-            .header__inner__main__searchBox__icon
-              = image_tag '/icon/icon-search 1.png'
-        .header__inner__main__searchBox__results
-          -# 検索結果を表示する
+        = form_with(url: search_items_path, local: true, method: :get) do |form|
+          = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__inner__main__searchBox__input"
+          = image_submit_tag "/icon/icon-search 1.png", class: "header__inner__main__searchBox__submit"
     .header__inner__nav
-      %ul{ class: 'listLeft__item' }
-        %li{ class: 'listLeft__item__left' }
-          =  link_to 'items' do
-            カテゴリー
-
-            %ul
-              %li
-                =  link_to '#' do
-                  1 pulldown-start
-                %ul
-                  %li
-                    =  link_to '#' do
-                      1-1
-                    %ul
-                      %li
-                        =  link_to '#' do
-                          1-2
-              %li
-                =  link_to '#' do
-                  2
-                %ul
-                  %li
-                    =  link_to '#' do
-                      2-1
-                    %ul
-                      %li
-                        =  link_to '#' do
-                          2-2
-              %li
-                =  link_to '#' do
-                  3
-                %ul
-                  %li
-                    =  link_to '#' do
-                      3-1
-                    %ul
-                      %li
-                        =  link_to '#' do
-                          3-2
-              %li
-                =  link_to '#' do
-                  4
-                %ul
-                  %li
-                    =  link_to '#' do
-                      4-1
-                    %ul
-                      %li
-                        =  link_to '#' do
-                          4-2
-              %li
-                =  link_to '#' do
-                  5
-                %ul
-                  %li
-                    =  link_to '#' do
-                      5-1
-                    %ul
-                      %li
-                        =  link_to '#' do
-                          5-2
-
-        %li{ class: 'listLeft__item__right' } ブランド
+      %ul{ class: 'header__inner__nav__listLeft' }
+        %li{ class: 'header__inner__nav__listLeft__item header__inner__nav__listLeft__item--first' }
+          = link_to '商品一覧', items_path
+        %li{ class: 'header__inner__nav__listLeft__item' } カテゴリー
+        %li{ class: 'header__inner__nav__listLeft__item' } ブランド
       %ul{ class: 'header__inner__nav__listRight' }
         - if user_signed_in?
           %li{ class: 'header__inner__nav__listRight__item' }
