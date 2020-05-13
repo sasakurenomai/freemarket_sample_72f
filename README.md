@@ -3,6 +3,9 @@
 git clone https://github.com/ymkthr/freemarket_sample_72f.git
 ```
 
+## URL
+http://52.198.58.99/
+
 ## DB設計
 ### Usersテーブル
 |Column|Type|Options|
